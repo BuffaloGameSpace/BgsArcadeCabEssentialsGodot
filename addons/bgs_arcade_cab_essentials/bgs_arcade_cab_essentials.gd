@@ -1,7 +1,7 @@
 @tool
 extends EditorPlugin
 
-
+#region Input constants
 const general_inputs = {
 	"bgs_stick_up": [JOY_BUTTON_DPAD_UP],
 	"bgs_stick_down": [JOY_BUTTON_DPAD_DOWN],
@@ -21,6 +21,13 @@ const insert_credit:= "bgs_insert_credit"
 
 const p1_device:= 0
 const p2_device:= 1
+#endregion
+
+#region Credits constants
+const autoload_credits_name:= "BgsArcadeCabCredits"
+const setting_required_credits:= "bgs_arcade_cab/credits/minimum_required_credits"
+#endregion
+
 
 func _enter_tree():
 	_setup_input()
@@ -81,7 +88,14 @@ func _setup_input() -> void:
 
 
 func _setup_credits_autoload() -> void:
-	pass
+	add_autoload_singleton(autoload_credits_name, "res://addons/bgs_arcade_cab_essentials/bgs_credits_autoload.gd")
+	ProjectSettings.set(setting_required_credits, 1)
+	var property_info = {
+		"name": "setting_required_credits",
+		"type": TYPE_INT,
+		"hint": PROPERTY_HINT_ENUM,
+		"hint_string": "The minimum number of credits your game requires for a player to start."
+	}
 
 
 func _setup_idle_quit_autoload() -> void:
@@ -97,7 +111,9 @@ func _cleanup_input() -> void:
 
 
 func _cleanup_credits_autoload() -> void:
-	pass
+	if ProjectSettings.has_setting(setting_required_credits):
+		ProjectSettings.set(setting_required_credits, null)
+	remove_autoload_singleton(autoload_credits_name)
 
 
 func _cleanup_idle_quit_autoload() -> void:

@@ -6,6 +6,7 @@ extends Control
 @export var stick:CabStick
 @export var buttons:Array[CabButton]
 
+
 func _ready():
 	stick.device_id = device_id
 	for button in buttons:
