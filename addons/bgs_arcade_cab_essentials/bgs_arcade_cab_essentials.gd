@@ -19,6 +19,9 @@ const p1_start:= "bgs_p1_start"
 const p2_start:= "bgs_p2_start"
 const insert_credit:= "bgs_insert_credit"
 
+const p1_device:= 0
+const p2_device:= 1
+
 func _enter_tree():
 	_setup_input()
 	_setup_credits_autoload()
@@ -35,32 +38,46 @@ func _exit_tree():
 func _setup_input() -> void:
 	# General controller inputs
 	for input in general_inputs.keys():
-		InputMap.add_action(input)
+		var input_info = {
+			"deadzone": 0.5,
+			"events": [],
+		}
 		for btn in general_inputs[input]:
 			var event = InputEventJoypadButton.new()
 			event.button_index = btn
-			InputMap.action_add_event(input, event)
+			event.device = -1
+			input_info["events"].append(event)
+		ProjectSettings.set_setting("input/%s" % input, input_info)
 	
 	# Start buttons
-	InputMap.add_action(p1_start)
-	InputMap.add_action(p2_start)
 	var p1_start_event = InputEventJoypadButton.new()
 	var p2_start_event = InputEventJoypadButton.new()
 	p1_start_event.button_index = JOY_BUTTON_START
 	p2_start_event.button_index = JOY_BUTTON_START
-	p1_start_event.device = 0
-	p2_start_event.device = 1
-	InputMap.action_add_event(p1_start, p1_start_event)
-	InputMap.action_add_event(p2_start, p2_start_event)
+	p1_start_event.device = p1_device
+	p2_start_event.device = p2_device
+	var p1_start_input = {
+		"deadzone": 0.5,
+		"events": [p1_start_event],
+	}
+	var p2_start_input = {
+		"deadzone": 0.5,
+		"events": [p2_start_event]
+	}
+	ProjectSettings.set_setting("input/%s" % p1_start, p1_start_input)
+	ProjectSettings.set_setting("input/%s" % p2_start, p2_start_input)
 	
 	# Coin op
-	InputMap.add_action(insert_credit)
 	var insert_credit_event = InputEventJoypadButton.new()
 	insert_credit_event.button_index = JOY_BUTTON_BACK
-	InputMap.action_add_event(insert_credit, insert_credit_event)
+	insert_credit_event.device = -1
 	var insert_credit_event_debug = InputEventKey.new()
 	insert_credit_event_debug.keycode = KEY_PLUS
-	InputMap.action_add_event(insert_credit, insert_credit_event_debug)
+	var insert_credit_input = {
+		"deadzone": 0.5,
+		"events": [insert_credit_event, insert_credit_event_debug]
+	}
+	ProjectSettings.set_setting("input/%s" % insert_credit, insert_credit_input)
 
 
 func _setup_credits_autoload() -> void:
@@ -73,10 +90,10 @@ func _setup_idle_quit_autoload() -> void:
 
 func _cleanup_input() -> void:
 	for input in general_inputs.keys():
-		InputMap.erase_action(input)
-	InputMap.erase_action(p1_start)
-	InputMap.erase_action(p2_start)
-	InputMap.erase_action(insert_credit)
+		ProjectSettings.set_setting("input/%s" % input, null)
+	ProjectSettings.set_setting("input/%s" % p1_start, null)
+	ProjectSettings.set_setting("input/%s" % p2_start, null)
+	ProjectSettings.set_setting("input/%s" % insert_credit, null)
 
 
 func _cleanup_credits_autoload() -> void:

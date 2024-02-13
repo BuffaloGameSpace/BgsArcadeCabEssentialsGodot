@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6afm3viellje"]
+
+[ext_resource type="Script" path="res://src/input_test/cab_stick.gd" id="1_wl1hv"]
+[ext_resource type="Texture2D" uid="uid://c71vivv77kirl" path="res://assets/sprites/inputs/Stick Center.svg" id="1_wsytm"]
+
+[node name="CabStick" type="TextureRect"]
+anchors_preset = -1
+anchor_right = 0.444444
+anchor_bottom = 0.790123
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wsytm")
+script = ExtResource("1_wl1hv")
+metadata/_edit_use_anchors_ = true

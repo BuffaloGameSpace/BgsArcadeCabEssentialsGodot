@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://3r04t2sa1sbq"]
+
+[ext_resource type="Texture2D" uid="uid://mlcpuheaqyr8" path="res://assets/sprites/inputs/P1 Button.svg" id="1_qsklv"]
+[ext_resource type="PackedScene" uid="uid://bmnqy4252jjrr" path="res://src/input_test/player_input.tscn" id="1_vyapc"]
+[ext_resource type="Texture2D" uid="uid://bp1mkwoqaveyx" path="res://assets/sprites/inputs/P1 Button Pressed.svg" id="3_oukgb"]
+[ext_resource type="Texture2D" uid="uid://dij7420jonnq2" path="res://assets/sprites/inputs/P2 Button.svg" id="4_v342k"]
+[ext_resource type="Script" path="res://src/input_test/cab_button.gd" id="5_iw1wu"]
+[ext_resource type="Texture2D" uid="uid://bd8a0f73jf34u" path="res://assets/sprites/inputs/P2 Button Pressed.svg" id="5_rvawm"]
+
+[node name="InputTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.0
+offset_top = 40.0
+offset_right = 138.0
+offset_bottom = 176.0
+grow_horizontal = 2
+metadata/_edit_group_ = true
+
+[node name="CabButton_Start_p1" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_qsklv")
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("5_iw1wu")
+action = "bgs_p1_start"
+released_texture = ExtResource("1_qsklv")
+pressed_texture = ExtResource("3_oukgb")
+
+[node name="CabButton_Start_p2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_v342k")
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("5_iw1wu")
+device_id = 1
+action = "bgs_p2_start"
+released_texture = ExtResource("4_v342k")
+pressed_texture = ExtResource("5_rvawm")
+
+[node name="PlayerInputContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0538194
+anchor_top = 0.396605
+anchor_right = 0.946181
+anchor_bottom = 0.737654
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerInput_p1" parent="PlayerInputContainer" instance=ExtResource("1_vyapc")]
+modulate = Color(0.0470588, 0.0627451, 1, 1)
+layout_mode = 2
+metadata/_edit_vertical_guides_ = [321.0]
+
+[node name="PlayerInput_p2" parent="PlayerInputContainer" node_paths=PackedStringArray("stick", "buttons") instance=ExtResource("1_vyapc")]
+modulate = Color(0.647059, 0, 0.207843, 1)
+layout_mode = 2
+device_id = 1
+stick = NodePath("../PlayerInput_p1/CabStick")
+buttons = [NodePath("../PlayerInput_p1/CabButtonX"), NodePath("../PlayerInput_p1/CabButtonY"), NodePath("../PlayerInput_p1/CabButtonZ"), NodePath("../PlayerInput_p1/CabButtonA"), NodePath("../PlayerInput_p1/CabButtonB"), NodePath("../PlayerInput_p1/CabButtonC")]
+metadata/_edit_vertical_guides_ = [321.0]
