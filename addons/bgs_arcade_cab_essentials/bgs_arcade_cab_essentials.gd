@@ -109,7 +109,7 @@ func _setup_input() -> void:
 
 
 func _setup_credits_autoload() -> void:
-	add_autoload_singleton(autoload_credits_name, "res://addons/bgs_arcade_cab_essentials/bgs_credits_autoload.gd")
+	add_autoload_singleton(autoload_credits_name, "res://addons/bgs_arcade_cab_essentials/autoloads/bgs_credits_autoload.gd")
 	ProjectSettings.set(setting_required_credits, 1)
 	var property_info = {
 		"name": setting_required_credits,
@@ -121,7 +121,7 @@ func _setup_credits_autoload() -> void:
 
 
 func _setup_idle_quit_autoload() -> void:
-	add_autoload_singleton(autoload_idle_name, "res://addons/bgs_arcade_cab_essentials/bgs_idle_quit_autoload.gd")
+	add_autoload_singleton(autoload_idle_name, "res://addons/bgs_arcade_cab_essentials/autoloads/bgs_idle_quit_autoload.gd")
 	
 	ProjectSettings.set(setting_idle_quit_enabled, true)
 	var enabled_prop_info = {

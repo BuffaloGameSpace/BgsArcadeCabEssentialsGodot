@@ -19,13 +19,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-BgsArcadeCabCredits="*res://addons/bgs_arcade_cab_essentials/bgs_credits_autoload.gd"
-BgsArcadeCabIdleQuit="*res://addons/bgs_arcade_cab_essentials/bgs_idle_quit_autoload.gd"
+BgsArcadeCabCredits="*res://addons/bgs_arcade_cab_essentials/autoloads/bgs_credits_autoload.gd"
+BgsArcadeCabIdleQuit="*res://addons/bgs_arcade_cab_essentials/autoloads/bgs_idle_quit_autoload.gd"
 
 [bgs_arcade_cab]
 
-credits/minimum_required_credits=1
 idle_quit/enabled=true
+credits/minimum_required_credits=1
 idle_quit/timeout=30
 
 [editor_plugins]
