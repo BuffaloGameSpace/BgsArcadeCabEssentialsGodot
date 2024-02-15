@@ -15,6 +15,7 @@ extends TextureRect
 @export var released_texture:CompressedTexture2D
 @export var pressed_texture:CompressedTexture2D
 
+
 func _input(event):
 	if event.device == device_id:
 		if event.is_action_pressed(action):

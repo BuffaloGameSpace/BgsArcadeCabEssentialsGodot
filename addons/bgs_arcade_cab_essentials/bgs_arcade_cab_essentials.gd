@@ -2,17 +2,20 @@
 extends EditorPlugin
 
 #region Input constants
-const general_inputs = {
+const general_buttons = {
 	"bgs_stick_up": [JOY_BUTTON_DPAD_UP],
 	"bgs_stick_down": [JOY_BUTTON_DPAD_DOWN],
 	"bgs_stick_left": [JOY_BUTTON_DPAD_LEFT],
 	"bgs_stick_right": [JOY_BUTTON_DPAD_RIGHT],
 	"bgs_btn_a": [JOY_BUTTON_A],
 	"bgs_btn_b": [JOY_BUTTON_B],
-	"bgs_btn_c": [JOY_BUTTON_LEFT_SHOULDER],
 	"bgs_btn_x": [JOY_BUTTON_X],
 	"bgs_btn_y": [JOY_BUTTON_Y],
 	"bgs_btn_z": [JOY_BUTTON_RIGHT_SHOULDER],
+}
+
+const general_axis = {
+	"bgs_btn_c": [JOY_AXIS_TRIGGER_RIGHT],
 }
 
 const p1_start:= "bgs_p1_start"
@@ -28,6 +31,13 @@ const autoload_credits_name:= "BgsArcadeCabCredits"
 const setting_required_credits:= "bgs_arcade_cab/credits/minimum_required_credits"
 #endregion
 
+#region Idle Quit constants
+
+const autoload_idle_name:= "BgsArcadeCabIdleQuit"
+const setting_idle_quit_timeout:= "bgs_arcade_cab/idle_quit/timeout"
+const setting_idle_quit_enabled:= "bgs_arcade_cab/idle_quit/enabled"
+#endregion
+
 
 func _enter_tree():
 	_setup_input()
@@ -41,20 +51,31 @@ func _exit_tree():
 	_cleanup_input()
 
 
-
 func _setup_input() -> void:
-	# General controller inputs
-	for input in general_inputs.keys():
+	# General controller button inputs
+	for button in general_buttons.keys():
 		var input_info = {
 			"deadzone": 0.5,
 			"events": [],
 		}
-		for btn in general_inputs[input]:
+		for btn in general_buttons[button]:
 			var event = InputEventJoypadButton.new()
 			event.button_index = btn
 			event.device = -1
 			input_info["events"].append(event)
-		ProjectSettings.set_setting("input/%s" % input, input_info)
+		ProjectSettings.set_setting("input/%s" % button, input_info)
+	# General axis inputs
+	for axis in general_axis.keys():
+		var input_info = {
+			"deadzone": 0.5,
+			"events": [],
+		}
+		for input in general_axis[axis]:
+			var event = InputEventJoypadMotion.new()
+			event.axis = input
+			event.device = -1
+			input_info["events"].append(event)
+		ProjectSettings.set_setting("input/%s" % axis, input_info)
 	
 	# Start buttons
 	var p1_start_event = InputEventJoypadButton.new()
@@ -91,19 +112,36 @@ func _setup_credits_autoload() -> void:
 	add_autoload_singleton(autoload_credits_name, "res://addons/bgs_arcade_cab_essentials/bgs_credits_autoload.gd")
 	ProjectSettings.set(setting_required_credits, 1)
 	var property_info = {
-		"name": "setting_required_credits",
+		"name": setting_required_credits,
 		"type": TYPE_INT,
-		"hint": PROPERTY_HINT_ENUM,
-		"hint_string": "The minimum number of credits your game requires for a player to start."
+		"hint": PROPERTY_HINT_RANGE,
+		"hint_string": "1,4,1,or_greater"
 	}
+	ProjectSettings.add_property_info(property_info)
 
 
 func _setup_idle_quit_autoload() -> void:
-	pass
+	add_autoload_singleton(autoload_idle_name, "res://addons/bgs_arcade_cab_essentials/bgs_idle_quit_autoload.gd")
+	
+	ProjectSettings.set(setting_idle_quit_enabled, true)
+	var enabled_prop_info = {
+		"name": setting_idle_quit_enabled,
+		"type": TYPE_BOOL,
+	}
+	ProjectSettings.add_property_info(enabled_prop_info)
+	
+	ProjectSettings.set(setting_idle_quit_timeout, 30)
+	var timeout_prop_info = {
+		"name": setting_idle_quit_timeout,
+		"type": TYPE_FLOAT,
+		"hint": PROPERTY_HINT_RANGE,
+		"hint_string": "1,30,1,or_greater"
+	}
+	ProjectSettings.add_property_info(timeout_prop_info)
 
 
 func _cleanup_input() -> void:
-	for input in general_inputs.keys():
+	for input in general_buttons.keys():
 		ProjectSettings.set_setting("input/%s" % input, null)
 	ProjectSettings.set_setting("input/%s" % p1_start, null)
 	ProjectSettings.set_setting("input/%s" % p2_start, null)
@@ -117,4 +155,6 @@ func _cleanup_credits_autoload() -> void:
 
 
 func _cleanup_idle_quit_autoload() -> void:
-	pass
+	if ProjectSettings.has_setting(setting_idle_quit_timeout):
+		ProjectSettings.set(setting_idle_quit_timeout, null)
+	remove_autoload_singleton(autoload_idle_name)

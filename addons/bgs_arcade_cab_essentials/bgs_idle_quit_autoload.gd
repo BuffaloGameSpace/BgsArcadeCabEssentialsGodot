@@ -1,11 +1,21 @@
-extends Node
+extends Timer
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var enabled: bool
+
+func _ready() -> void:
+	wait_time = ProjectSettings.get("bgs_arcade_cab/idle_quit/timeout")
+	enabled = ProjectSettings.get("bgs_arcade_cab/idle_quit/enabled")
+	timeout.connect(_on_timeout)
+	if enabled:
+		start(wait_time)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _input(event):
+	if enabled:
+		if event is InputEventJoypadButton || event is InputEventJoypadMotion:
+			start(wait_time)
+
+
+func _on_timeout() -> void:
+	get_tree().quit()

@@ -20,6 +20,10 @@ var credits:= 0:
 		return credits
 
 
+func _ready() -> void:
+	(func(): credits_changed.emit(credits)).call_deferred()
+
+
 func _input(event):
 	if event.is_action_pressed("bgs_insert_credit"):
 		credits += 1
