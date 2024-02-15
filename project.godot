@@ -11,7 +11,11 @@ config_version=5
 [application]
 
 config/name="BGS Arcade Cab Demo"
+config/description="The BGS Arcade Cab Plugin, complete with a small demo project"
+config/version="1.0s"
+run/main_scene="res://demo/src/demo/demo.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://icon.svg"
 
 [autoload]
 
