@@ -20,21 +20,21 @@ var _pos: Vector2i
 
 func _input(event):
 	if event.device == device_id:
-		if event.is_action_pressed("bgs_stick_left"):
+		if event.is_action_pressed("bgs_left"):
 			_pos.x -= 1
-		if event.is_action_released("bgs_stick_left"):
+		if event.is_action_released("bgs_left"):
 			_pos.x += 1
-		if event.is_action_pressed("bgs_stick_right"):
+		if event.is_action_pressed("bgs_right"):
 			_pos.x += 1
-		if event.is_action_released("bgs_stick_right"):
+		if event.is_action_released("bgs_right"):
 			_pos.x -= 1
-		if event.is_action_pressed("bgs_stick_up"):
+		if event.is_action_pressed("bgs_up"):
 			_pos.y -= 1
-		if event.is_action_released("bgs_stick_up"):
+		if event.is_action_released("bgs_up"):
 			_pos.y += 1
-		if event.is_action_pressed("bgs_stick_down"):
+		if event.is_action_pressed("bgs_down"):
 			_pos.y += 1
-		if event.is_action_released("bgs_stick_down"):
+		if event.is_action_released("bgs_down"):
 			_pos.y -= 1
 		
 		if _sprites.has(_pos):

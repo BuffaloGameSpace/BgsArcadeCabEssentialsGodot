@@ -3,19 +3,19 @@ extends EditorPlugin
 
 #region Input constants
 const general_buttons = {
-	"bgs_stick_up": [JOY_BUTTON_DPAD_UP],
-	"bgs_stick_down": [JOY_BUTTON_DPAD_DOWN],
-	"bgs_stick_left": [JOY_BUTTON_DPAD_LEFT],
-	"bgs_stick_right": [JOY_BUTTON_DPAD_RIGHT],
-	"bgs_btn_a": [JOY_BUTTON_A],
-	"bgs_btn_b": [JOY_BUTTON_B],
-	"bgs_btn_x": [JOY_BUTTON_X],
-	"bgs_btn_y": [JOY_BUTTON_Y],
-	"bgs_btn_z": [JOY_BUTTON_RIGHT_SHOULDER],
+	"bgs_up": [JOY_BUTTON_DPAD_UP],
+	"bgs_down": [JOY_BUTTON_DPAD_DOWN],
+	"bgs_left": [JOY_BUTTON_DPAD_LEFT],
+	"bgs_right": [JOY_BUTTON_DPAD_RIGHT],
+	"bgs_a": [JOY_BUTTON_A],
+	"bgs_b": [JOY_BUTTON_B],
+	"bgs_x": [JOY_BUTTON_X],
+	"bgs_y": [JOY_BUTTON_Y],
+	"bgs_z": [JOY_BUTTON_RIGHT_SHOULDER],
 }
 
 const general_axis = {
-	"bgs_btn_c": [JOY_AXIS_TRIGGER_RIGHT],
+	"bgs_c": [JOY_AXIS_TRIGGER_RIGHT],
 }
 
 const p1_start:= "bgs_p1_start"

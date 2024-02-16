@@ -3,12 +3,12 @@ extends TextureRect
 
 @export var device_id:= 0
 @export_enum(
-	"bgs_btn_a",
-	"bgs_btn_b",
-	"bgs_btn_c",
-	"bgs_btn_x",
-	"bgs_btn_y",
-	"bgs_btn_z",
+	"bgs_a",
+	"bgs_b",
+	"bgs_c",
+	"bgs_x",
+	"bgs_y",
+	"bgs_z",
 	"bgs_p1_start",
 	"bgs_p2_start",
 	) var action:String
