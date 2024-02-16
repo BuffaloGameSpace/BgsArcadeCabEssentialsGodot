@@ -8,8 +8,7 @@ MarginContainer/constants/margin_left = 32
 MarginContainer/constants/margin_right = 32
 MarginContainer/constants/margin_top = 32
 
-[node name="Demo" type="Control"]
-layout_mode = 3
+[node name="Demo" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,19 +16,5 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_4wfyu")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
-layout_mode = 2
-
-[node name="InputTest" parent="MarginContainer/PanelContainer/MarginContainer" instance=ExtResource("1_gg74l")]
+[node name="InputTest" parent="." instance=ExtResource("1_gg74l")]
 layout_mode = 2

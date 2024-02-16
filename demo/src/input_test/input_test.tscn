@@ -78,7 +78,7 @@ horizontal_alignment = 1
 script = ExtResource("6_jw5j7")
 
 [node name="PlayerInput" parent="VBoxContainer/PlayerInputContainer/Device0" instance=ExtResource("1_vyapc")]
-modulate = Color(0, 0.0862745, 0.67451, 1)
+modulate = Color(0, 0.439216, 0.67451, 1)
 layout_mode = 2
 
 [node name="Device1" type="VBoxContainer" parent="VBoxContainer/PlayerInputContainer"]

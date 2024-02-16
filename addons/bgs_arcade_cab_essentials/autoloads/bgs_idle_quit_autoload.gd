@@ -1,7 +1,7 @@
 extends Timer
 
-
 var enabled: bool
+
 
 func _ready() -> void:
 	wait_time = ProjectSettings.get("bgs_arcade_cab/idle_quit/timeout")

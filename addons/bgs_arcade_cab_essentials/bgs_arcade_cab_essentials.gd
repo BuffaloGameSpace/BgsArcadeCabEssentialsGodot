@@ -50,6 +50,7 @@ func _exit_tree():
 	_cleanup_credits_autoload()
 	_cleanup_input()
 
+#region Plugin Setup
 
 func _setup_input() -> void:
 	# General controller button inputs
@@ -139,6 +140,9 @@ func _setup_idle_quit_autoload() -> void:
 	}
 	ProjectSettings.add_property_info(timeout_prop_info)
 
+#endregion
+
+#region Plugin Cleanup
 
 func _cleanup_input() -> void:
 	for input in general_buttons.keys():
@@ -158,3 +162,5 @@ func _cleanup_idle_quit_autoload() -> void:
 	if ProjectSettings.has_setting(setting_idle_quit_timeout):
 		ProjectSettings.set(setting_idle_quit_timeout, null)
 	remove_autoload_singleton(autoload_idle_name)
+
+#endregion
