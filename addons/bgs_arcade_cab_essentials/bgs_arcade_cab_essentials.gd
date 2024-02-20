@@ -11,11 +11,11 @@ var _main_ui_shown:= false
 
 
 func _enter_tree():
-	_setup_input()
-	_setup_credits_autoload()
-	_setup_idle_quit_autoload()
-	_setup_general_autoload()
-	_setup_ui()
+	_setup_input.call_deferred()
+	_setup_credits_autoload.call_deferred()
+	_setup_idle_quit_autoload.call_deferred()
+	_setup_general_autoload.call_deferred()
+	_setup_ui.call_deferred()
 
 
 func _exit_tree():
@@ -29,6 +29,8 @@ func _exit_tree():
 
 func _setup_input() -> void:
 	for action in BgsCabConsts.PlayerInput.mappings:
+		if ProjectSettings.has_setting("input/%s" % action):
+			continue # Skip any actions that already exist in settings
 		var input_info = {
 			"deadzone": 0.5,
 			"events": [],
@@ -54,63 +56,76 @@ func _setup_input() -> void:
 				key_event.device = -1 # Keyboard events are always all keyboards (should only be one)
 				input_info["events"].append(key_event)
 		ProjectSettings.set("input/%s" % action, input_info)
+	ProjectSettings.save()
 	InputMap.load_from_project_settings()
 
 
 func _setup_credits_autoload() -> void:
-	ProjectSettings.set(BgsCabConsts.Settings.Credits.minimum_credits, 1)
-	var required_credits_property_info = {
-		"name": BgsCabConsts.Settings.Credits.minimum_credits,
-		"type": TYPE_INT,
-		"hint": PROPERTY_HINT_RANGE,
-		"hint_string": "1,4,1,or_greater"
-	}
-	ProjectSettings.add_property_info(required_credits_property_info)
+	if !ProjectSettings.has_setting(BgsCabConsts.Settings.Credits.minimum_credits):
+		ProjectSettings.set(BgsCabConsts.Settings.Credits.minimum_credits, 1)
+		var required_credits_property_info = {
+			"name": BgsCabConsts.Settings.Credits.minimum_credits,
+			"type": TYPE_INT,
+			"hint": PROPERTY_HINT_RANGE,
+			"hint_string": "1,4,1,or_greater"
+		}
+		ProjectSettings.add_property_info(required_credits_property_info)
+		ProjectSettings.save()
 	
-	ProjectSettings.set(BgsCabConsts.Settings.Credits.free_play_enabled, false)
-	var free_play_property_info = {
-		"name": BgsCabConsts.Settings.Credits.free_play_enabled,
-		"type": TYPE_BOOL,
-	}
-	ProjectSettings.add_property_info(free_play_property_info)
-	
+	if !ProjectSettings.has_setting(BgsCabConsts.Settings.Credits.free_play_enabled):
+		ProjectSettings.set(BgsCabConsts.Settings.Credits.free_play_enabled, false)
+		var free_play_property_info = {
+			"name": BgsCabConsts.Settings.Credits.free_play_enabled,
+			"type": TYPE_BOOL,
+		}
+		ProjectSettings.add_property_info(free_play_property_info)
+		ProjectSettings.save()
+
 	add_autoload_singleton(BgsCabConsts.AutoloadNames.credits, "res://addons/bgs_arcade_cab_essentials/autoloads/bgs_credits_autoload.gd")	
 
 
 func _setup_idle_quit_autoload() -> void:
-	ProjectSettings.set(BgsCabConsts.Settings.IdleQuit.enabled, true)
-	var enabled_prop_info = {
-		"name": BgsCabConsts.Settings.IdleQuit.enabled,
-		"type": TYPE_BOOL,
-	}
-	ProjectSettings.add_property_info(enabled_prop_info)
+	if !ProjectSettings.has_setting(BgsCabConsts.Settings.IdleQuit.enabled):
+		ProjectSettings.set(BgsCabConsts.Settings.IdleQuit.enabled, true)
+		var enabled_prop_info = {
+			"name": BgsCabConsts.Settings.IdleQuit.enabled,
+			"type": TYPE_BOOL,
+		}
+		ProjectSettings.add_property_info(enabled_prop_info)
+		ProjectSettings.save()
 	
-	ProjectSettings.set(BgsCabConsts.Settings.IdleQuit.timeout, 30)
-	var timeout_prop_info = {
-		"name": BgsCabConsts.Settings.IdleQuit.timeout,
-		"type": TYPE_FLOAT,
-		"hint": PROPERTY_HINT_RANGE,
-		"hint_string": "1,30,1,or_greater"
-	}
-	ProjectSettings.add_property_info(timeout_prop_info)
+	if !ProjectSettings.has_setting(BgsCabConsts.Settings.IdleQuit.timeout):
+		ProjectSettings.set(BgsCabConsts.Settings.IdleQuit.timeout, 30)
+		var timeout_prop_info = {
+			"name": BgsCabConsts.Settings.IdleQuit.timeout,
+			"type": TYPE_FLOAT,
+			"hint": PROPERTY_HINT_RANGE,
+			"hint_string": "1,30,1,or_greater"
+		}
+		ProjectSettings.add_property_info(timeout_prop_info)
+		ProjectSettings.save()
 	
 	add_autoload_singleton(BgsCabConsts.AutoloadNames.idle_quit, "res://addons/bgs_arcade_cab_essentials/autoloads/bgs_idle_quit_autoload.gd")
 
 
 func _setup_general_autoload() -> void:
-	ProjectSettings.set(BgsCabConsts.Settings.General.hide_cursor, true)
-	var hide_cursor_prop_info = {
-		"name": BgsCabConsts.Settings.General.hide_cursor,
-		"type": TYPE_BOOL,
-	}
-	ProjectSettings.add_property_info(hide_cursor_prop_info)
+	if !ProjectSettings.has_setting(BgsCabConsts.Settings.General.hide_cursor):
+		ProjectSettings.set(BgsCabConsts.Settings.General.hide_cursor, true)
+		var hide_cursor_prop_info = {
+			"name": BgsCabConsts.Settings.General.hide_cursor,
+			"type": TYPE_BOOL,
+		}
+		ProjectSettings.add_property_info(hide_cursor_prop_info)
+		ProjectSettings.save()
 	
-	ProjectSettings.set(BgsCabConsts.Settings.General.force_fullscreen, true)
-	var force_fullscreen_prop_info = {
-		"name": BgsCabConsts.Settings.General.force_fullscreen,
-		"type": TYPE_BOOL
-	}
-	ProjectSettings.add_property_info(force_fullscreen_prop_info)
+	if !ProjectSettings.has_setting(BgsCabConsts.Settings.General.force_fullscreen):
+		ProjectSettings.set(BgsCabConsts.Settings.General.force_fullscreen, true)
+		var force_fullscreen_prop_info = {
+			"name": BgsCabConsts.Settings.General.force_fullscreen,
+			"type": TYPE_BOOL
+		}
+		ProjectSettings.add_property_info(force_fullscreen_prop_info)
+		ProjectSettings.save()
 	
 	add_autoload_singleton(BgsCabConsts.AutoloadNames.general_config, "res://addons/bgs_arcade_cab_essentials/autoloads/bgs_general_autoload.gd")
 
@@ -127,6 +142,7 @@ func _cleanup_input() -> void:
 	for action in BgsCabConsts.PlayerInput.mappings:
 		ProjectSettings.set("input/%s" % action, null)
 	InputMap.load_from_project_settings()
+	ProjectSettings.save()
 
 
 func _cleanup_credits_autoload() -> void:
@@ -134,6 +150,7 @@ func _cleanup_credits_autoload() -> void:
 		ProjectSettings.set(BgsCabConsts.Settings.Credits.minimum_credits, null)
 	if ProjectSettings.has_setting(BgsCabConsts.Settings.Credits.free_play_enabled):
 		ProjectSettings.set(BgsCabConsts.Settings.Credits.free_play_enabled, null)
+	ProjectSettings.save()
 	remove_autoload_singleton(BgsCabConsts.AutoloadNames.credits)
 
 

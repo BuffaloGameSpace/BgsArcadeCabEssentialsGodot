@@ -41,6 +41,7 @@ func _on_project_settings_changed() -> void:
 
 func _on_launch_fullscreen_check_box_toggled(toggled_on:bool):
 	ProjectSettings.set(BgsCabConsts.Settings.General.force_fullscreen, toggled_on)
+	ProjectSettings.save()
 
 
 func _on_hide_cursor_check_box_toggled(toggled_on:bool):
