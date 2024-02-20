@@ -20,8 +20,6 @@ extends Control
 
 func _ready():
 	ProjectSettings.settings_changed.connect(_on_project_settings_changed)
-	# Fire once to ensure settings match at plugin start
-	_on_project_settings_changed.call_deferred()
 
 
 func _on_project_settings_changed() -> void:
@@ -46,19 +44,24 @@ func _on_launch_fullscreen_check_box_toggled(toggled_on:bool):
 
 func _on_hide_cursor_check_box_toggled(toggled_on:bool):
 	ProjectSettings.set(BgsCabConsts.Settings.General.hide_cursor, toggled_on)
+	ProjectSettings.save()
 
 
 func _on_minimum_credits_spin_box_value_changed(value):
 	ProjectSettings.set(BgsCabConsts.Settings.Credits.minimum_credits, value as int)
+	ProjectSettings.save()
 
 
 func _on_free_play_check_box_toggled(toggled_on:bool):
 	ProjectSettings.set(BgsCabConsts.Settings.Credits.free_play_enabled, toggled_on)
+	ProjectSettings.save()
 
 
 func _on_idle_timer_check_box_toggled(toggled_on:bool):
 	ProjectSettings.set(BgsCabConsts.Settings.IdleQuit.enabled, toggled_on)
+	ProjectSettings.save()
 
 
 func _on_idle_timeout_spin_box_value_changed(value):
 	ProjectSettings.set(BgsCabConsts.Settings.IdleQuit.timeout, value as int)
+	ProjectSettings.save()

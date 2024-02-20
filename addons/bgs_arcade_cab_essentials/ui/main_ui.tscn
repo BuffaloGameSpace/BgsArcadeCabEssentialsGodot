@@ -18,10 +18,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_p4apt")
-current_tab = 1
 
 [node name="Game Options" type="Control" parent="." node_paths=PackedStringArray("launch_fullscreen", "hide_cursor", "min_credits", "free_play", "idle_quit_enabled", "idle_quit_timeout")]
-visible = false
 layout_mode = 2
 script = ExtResource("1_d2i1v")
 launch_fullscreen = NodePath("MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/LaunchFullscreen/LaunchFullscreenCheckBox")
@@ -75,7 +73,6 @@ text = "Force Fullscreen"
 [node name="LaunchFullscreenCheckBox" type="CheckBox" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/LaunchFullscreen"]
 layout_mode = 2
 size_flags_horizontal = 3
-button_pressed = true
 text = "Fullscreen Enabled"
 
 [node name="HideCursor" type="VBoxContainer" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer"]
@@ -94,7 +91,6 @@ text = "Hide Cursor"
 [node name="HideCursorCheckBox" type="CheckBox" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/HideCursor/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-button_pressed = true
 text = "Cursor Hidden"
 
 [node name="Credits" type="VBoxContainer" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer"]
@@ -127,7 +123,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
 max_value = 4.0
-value = 1.0
+value = 4.0
 rounded = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Credits/MarginContainer/VBoxContainer"]
@@ -143,6 +139,7 @@ text = "Free Play"
 [node name="FreePlayCheckBox" type="CheckBox" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Credits/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+button_pressed = true
 text = "Enabled"
 
 [node name="Idle Quit" type="VBoxContainer" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer"]
@@ -171,7 +168,6 @@ text = "Idle Timer"
 [node name="IdleTimerCheckBox" type="CheckBox" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Idle Quit/MarginContainer/VBoxContainer/Enabled"]
 layout_mode = 2
 size_flags_horizontal = 3
-button_pressed = true
 text = "Enabled"
 
 [node name="Timeout" type="HBoxContainer" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Idle Quit/MarginContainer/VBoxContainer"]
@@ -186,11 +182,12 @@ text = "Timeout"
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 300.0
-value = 30.0
+value = 45.0
 rounded = true
 suffix = "seconds"
 
 [node name="Input Actions" type="Control" parent="." node_paths=PackedStringArray("add_action_window", "input_action_tree")]
+visible = false
 layout_mode = 2
 script = ExtResource("2_3ysxe")
 add_action_window = NodePath("AddActionWindow")

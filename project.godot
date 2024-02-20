@@ -26,12 +26,12 @@ BgsGeneralConfig="*res://addons/bgs_arcade_cab_essentials/autoloads/bgs_general_
 
 [bgs_arcade_cab]
 
-credits/minimum_required_credits=1
-credits/free_play_enabled=false
-idle_quit/enabled=true
-idle_quit/timeout=30
-general/hide_cursor=true
-general/force_fullscreen=true
+general/hide_cursor=false
+general/force_fullscreen=false
+credits/minimum_required_credits=4
+credits/free_play_enabled=true
+idle_quit/enabled=false
+idle_quit/timeout=45
 
 [editor_plugins]
 

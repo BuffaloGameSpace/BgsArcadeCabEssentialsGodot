@@ -11,11 +11,15 @@ var _main_ui_shown:= false
 
 
 func _enter_tree():
-	_setup_input.call_deferred()
-	_setup_credits_autoload.call_deferred()
-	_setup_idle_quit_autoload.call_deferred()
-	_setup_general_autoload.call_deferred()
-	_setup_ui.call_deferred()
+	_setup_input_settings()
+	_setup_general_settings()
+	_setup_credits_settings()
+	_setup_idle_quit_settings()
+	
+	_setup_credits_autoload()
+	_setup_idle_quit_autoload()
+	_setup_general_autoload()
+	_setup_ui()
 
 
 func _exit_tree():
@@ -23,11 +27,19 @@ func _exit_tree():
 	_cleanup_general_autoload()
 	_cleanup_idle_quit_autoload()
 	_cleanup_credits_autoload()
-	_cleanup_input()
+
+
+func _disable_plugin():
+	_cleanup_idle_quit_settings()
+	_cleanup_credits_settings()
+	_cleanup_general_settings()
+	_cleanup_input_settings()
+
+
 
 #region Plugin Setup
 
-func _setup_input() -> void:
+func _setup_input_settings() -> void:
 	for action in BgsCabConsts.PlayerInput.mappings:
 		if ProjectSettings.has_setting("input/%s" % action):
 			continue # Skip any actions that already exist in settings
@@ -61,6 +73,10 @@ func _setup_input() -> void:
 
 
 func _setup_credits_autoload() -> void:
+	add_autoload_singleton(BgsCabConsts.AutoloadNames.credits, "res://addons/bgs_arcade_cab_essentials/autoloads/bgs_credits_autoload.gd")	
+
+
+func _setup_credits_settings() -> void:
 	if !ProjectSettings.has_setting(BgsCabConsts.Settings.Credits.minimum_credits):
 		ProjectSettings.set(BgsCabConsts.Settings.Credits.minimum_credits, 1)
 		var required_credits_property_info = {
@@ -81,10 +97,12 @@ func _setup_credits_autoload() -> void:
 		ProjectSettings.add_property_info(free_play_property_info)
 		ProjectSettings.save()
 
-	add_autoload_singleton(BgsCabConsts.AutoloadNames.credits, "res://addons/bgs_arcade_cab_essentials/autoloads/bgs_credits_autoload.gd")	
-
 
 func _setup_idle_quit_autoload() -> void:
+	add_autoload_singleton(BgsCabConsts.AutoloadNames.idle_quit, "res://addons/bgs_arcade_cab_essentials/autoloads/bgs_idle_quit_autoload.gd")
+
+
+func _setup_idle_quit_settings() -> void:
 	if !ProjectSettings.has_setting(BgsCabConsts.Settings.IdleQuit.enabled):
 		ProjectSettings.set(BgsCabConsts.Settings.IdleQuit.enabled, true)
 		var enabled_prop_info = {
@@ -104,11 +122,14 @@ func _setup_idle_quit_autoload() -> void:
 		}
 		ProjectSettings.add_property_info(timeout_prop_info)
 		ProjectSettings.save()
-	
-	add_autoload_singleton(BgsCabConsts.AutoloadNames.idle_quit, "res://addons/bgs_arcade_cab_essentials/autoloads/bgs_idle_quit_autoload.gd")
+
 
 
 func _setup_general_autoload() -> void:
+	add_autoload_singleton(BgsCabConsts.AutoloadNames.general_config, "res://addons/bgs_arcade_cab_essentials/autoloads/bgs_general_autoload.gd")
+
+
+func _setup_general_settings() -> void:
 	if !ProjectSettings.has_setting(BgsCabConsts.Settings.General.hide_cursor):
 		ProjectSettings.set(BgsCabConsts.Settings.General.hide_cursor, true)
 		var hide_cursor_prop_info = {
@@ -126,8 +147,6 @@ func _setup_general_autoload() -> void:
 		}
 		ProjectSettings.add_property_info(force_fullscreen_prop_info)
 		ProjectSettings.save()
-	
-	add_autoload_singleton(BgsCabConsts.AutoloadNames.general_config, "res://addons/bgs_arcade_cab_essentials/autoloads/bgs_general_autoload.gd")
 
 
 func _setup_ui() -> void:
@@ -138,7 +157,7 @@ func _setup_ui() -> void:
 
 #region Plugin Cleanup
 
-func _cleanup_input() -> void:
+func _cleanup_input_settings() -> void:
 	for action in BgsCabConsts.PlayerInput.mappings:
 		ProjectSettings.set("input/%s" % action, null)
 	InputMap.load_from_project_settings()
@@ -146,28 +165,37 @@ func _cleanup_input() -> void:
 
 
 func _cleanup_credits_autoload() -> void:
+	remove_autoload_singleton(BgsCabConsts.AutoloadNames.credits)
+
+
+func _cleanup_credits_settings() -> void:
 	if ProjectSettings.has_setting(BgsCabConsts.Settings.Credits.minimum_credits):
 		ProjectSettings.set(BgsCabConsts.Settings.Credits.minimum_credits, null)
 	if ProjectSettings.has_setting(BgsCabConsts.Settings.Credits.free_play_enabled):
 		ProjectSettings.set(BgsCabConsts.Settings.Credits.free_play_enabled, null)
 	ProjectSettings.save()
-	remove_autoload_singleton(BgsCabConsts.AutoloadNames.credits)
 
 
 func _cleanup_idle_quit_autoload() -> void:
+	remove_autoload_singleton(BgsCabConsts.AutoloadNames.idle_quit)
+
+
+func _cleanup_idle_quit_settings() -> void:
 	if ProjectSettings.has_setting(BgsCabConsts.Settings.IdleQuit.timeout):
 		ProjectSettings.set(BgsCabConsts.Settings.IdleQuit.timeout, null)
 	if ProjectSettings.has_setting(BgsCabConsts.Settings.IdleQuit.enabled):
 		ProjectSettings.set(BgsCabConsts.Settings.IdleQuit.enabled, null)
-	remove_autoload_singleton(BgsCabConsts.AutoloadNames.idle_quit)
 
 
 func _cleanup_general_autoload() -> void:
+	remove_autoload_singleton(BgsCabConsts.AutoloadNames.general_config)
+
+
+func _cleanup_general_settings() -> void:
 	if ProjectSettings.has_setting(BgsCabConsts.Settings.General.hide_cursor):
 		ProjectSettings.set(BgsCabConsts.Settings.General.hide_cursor, null)
 	if ProjectSettings.has_setting(BgsCabConsts.Settings.General.force_fullscreen):
 		ProjectSettings.set(BgsCabConsts.Settings.General.force_fullscreen, null)
-	remove_autoload_singleton(BgsCabConsts.AutoloadNames.general_config)
 
 
 func _cleanup_ui() -> void:
