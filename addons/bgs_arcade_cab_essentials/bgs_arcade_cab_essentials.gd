@@ -20,6 +20,7 @@ func _enter_tree():
 	_setup_idle_quit_autoload()
 	_setup_general_autoload()
 	_setup_ui()
+	pass
 
 
 func _exit_tree():
@@ -69,7 +70,7 @@ func _setup_input_settings() -> void:
 				input_info["events"].append(key_event)
 		ProjectSettings.set("input/%s" % action, input_info)
 	ProjectSettings.save()
-	InputMap.load_from_project_settings()
+
 
 
 func _setup_credits_autoload() -> void:
@@ -122,7 +123,6 @@ func _setup_idle_quit_settings() -> void:
 		}
 		ProjectSettings.add_property_info(timeout_prop_info)
 		ProjectSettings.save()
-
 
 
 func _setup_general_autoload() -> void:
