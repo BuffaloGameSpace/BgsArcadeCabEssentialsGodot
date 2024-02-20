@@ -64,8 +64,8 @@ func _setup_input_settings() -> void:
 		if BgsCabConsts.PlayerInput.mappings[action].has(BgsCabConsts.PlayerInput.MappingKeys.keys):
 			for key in BgsCabConsts.PlayerInput.mappings[action][BgsCabConsts.PlayerInput.MappingKeys.keys]:
 				var key_event = InputEventKey.new()
-				key_event.key_label = key
-				key_event.device = -1 # Keyboard events are always all keyboards (should only be one)
+				key_event.physical_keycode = key
+				key_event.device = 0 # Keyboard events are always all keyboards (should only be one)
 				input_info["events"].append(key_event)
 		ProjectSettings.set("input/%s" % action, input_info)
 	ProjectSettings.save()
