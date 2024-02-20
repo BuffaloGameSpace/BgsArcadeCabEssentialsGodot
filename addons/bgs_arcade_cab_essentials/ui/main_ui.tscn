@@ -1,6 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnuvqilh6jpnu"]
+[gd_scene load_steps=8 format=3 uid="uid://bnuvqilh6jpnu"]
 
 [ext_resource type="Script" path="res://addons/bgs_arcade_cab_essentials/ui/bgs_arcade_cab_ui_options.gd" id="1_d2i1v"]
+[ext_resource type="Texture2D" uid="uid://bxjnbm7f04wpq" path="res://demo/assets/sprites/inputs/Stick Base.svg" id="2_cty51"]
+[ext_resource type="Texture2D" uid="uid://bdbr1i3wjexai" path="res://demo/assets/sprites/inputs/Blank Button.svg" id="3_m3mvg"]
+[ext_resource type="Texture2D" uid="uid://mlcpuheaqyr8" path="res://demo/assets/sprites/inputs/P1 Button.svg" id="4_rckw2"]
+[ext_resource type="Texture2D" uid="uid://dij7420jonnq2" path="res://demo/assets/sprites/inputs/P2 Button.svg" id="5_sdfdd"]
+[ext_resource type="Texture2D" uid="uid://ctp0rj7bao06s" path="res://demo/assets/sprites/inputs/Coin Mech.svg" id="6_dcmbx"]
 
 [sub_resource type="Theme" id="Theme_p4apt"]
 
@@ -11,8 +16,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_p4apt")
+current_tab = 1
 
 [node name="Game Options" type="Control" parent="." node_paths=PackedStringArray("launch_fullscreen", "hide_cursor", "min_credits", "free_play", "idle_quit_enabled", "idle_quit_timeout")]
+visible = false
 layout_mode = 2
 script = ExtResource("1_d2i1v")
 launch_fullscreen = NodePath("MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/LaunchFullscreen/LaunchFullscreenCheckBox")
@@ -66,6 +73,7 @@ text = "Force Fullscreen"
 [node name="LaunchFullscreenCheckBox" type="CheckBox" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/LaunchFullscreen"]
 layout_mode = 2
 size_flags_horizontal = 3
+button_pressed = true
 text = "Fullscreen Enabled"
 
 [node name="HideCursor" type="VBoxContainer" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer"]
@@ -161,6 +169,7 @@ text = "Idle Timer"
 [node name="IdleTimerCheckBox" type="CheckBox" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Idle Quit/MarginContainer/VBoxContainer/Enabled"]
 layout_mode = 2
 size_flags_horizontal = 3
+button_pressed = true
 text = "Enabled"
 
 [node name="Timeout" type="HBoxContainer" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Idle Quit/MarginContainer/VBoxContainer"]
@@ -175,12 +184,501 @@ text = "Timeout"
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 300.0
+value = 30.0
 rounded = true
 suffix = "seconds"
 
 [node name="Input Actions" type="Control" parent="."]
-visible = false
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Input Actions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Input Actions/MarginContainer"]
+layout_mode = 2
+split_offset = 250
+
+[node name="InputActionsTree" type="Tree" parent="Input Actions/MarginContainer/HSplitContainer"]
+layout_mode = 2
+
+[node name="InputLayout" type="Control" parent="Input Actions/MarginContainer/HSplitContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer"]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer"]
+layout_mode = 2
+ratio = 1.65
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Joystick" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/Joystick"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/Joystick/AspectRatioContainer"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_cty51")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/Joystick/AspectRatioContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="GridContainer" type="GridContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/Joystick/AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Fill" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonUp" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "UP"
+clip_text = true
+
+[node name="Fill2" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonLeft" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "LEFT"
+clip_text = true
+
+[node name="Fill3" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "RIGHT"
+clip_text = true
+
+[node name="Fill4" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonDown" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "DOWN"
+clip_text = true
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SixButtons" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonsXA" type="VBoxContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Padding" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="Padding2" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="Button" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonX" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "X"
+
+[node name="TextureRect" type="TextureRect" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_m3mvg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button2" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonA" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "A"
+
+[node name="TextureRect" type="TextureRect" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button2"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_m3mvg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ButtonsYB" type="VBoxContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Padding" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="Button" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonY" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "Y"
+
+[node name="TextureRect" type="TextureRect" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_m3mvg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button2" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonB" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "B"
+
+[node name="TextureRect" type="TextureRect" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button2"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_m3mvg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Padding2" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="ButtonsZC" type="VBoxContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonZ" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "Z"
+
+[node name="TextureRect" type="TextureRect" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_m3mvg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button2" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonC" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "C"
+
+[node name="TextureRect" type="TextureRect" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button2"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_m3mvg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Padding" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="Padding2" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/HBoxContainer/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="StartCoinButtons" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonP1" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer/Button/AspectRatioContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "P1"
+
+[node name="TextureRect" type="TextureRect" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer/Button/AspectRatioContainer"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_rckw2")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Button2" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonP2" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer/Button2/AspectRatioContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "P2"
+
+[node name="TextureRect" type="TextureRect" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer/Button2/AspectRatioContainer"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_sdfdd")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Padding" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Button3" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer/Button3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonCoin1" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer/Button3/AspectRatioContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "Coin
+1"
+
+[node name="TextureRect" type="TextureRect" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer/Button3/AspectRatioContainer"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_dcmbx")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Button4" type="Control" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer/Button4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonCoin2" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer/Button4/AspectRatioContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "Coin
+2"
+
+[node name="TextureRect" type="TextureRect" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/VBoxContainer/StartCoinButtons/HBoxContainer/Button4/AspectRatioContainer"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_dcmbx")
+expand_mode = 2
+stretch_mode = 5
 
 [connection signal="toggled" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/LaunchFullscreen/LaunchFullscreenCheckBox" to="Game Options" method="_on_launch_fullscreen_check_box_toggled"]
 [connection signal="toggled" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/HideCursor/HBoxContainer/HideCursorCheckBox" to="Game Options" method="_on_hide_cursor_check_box_toggled"]
