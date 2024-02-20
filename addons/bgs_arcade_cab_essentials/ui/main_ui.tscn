@@ -73,6 +73,7 @@ text = "Force Fullscreen"
 [node name="LaunchFullscreenCheckBox" type="CheckBox" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/LaunchFullscreen"]
 layout_mode = 2
 size_flags_horizontal = 3
+button_pressed = true
 text = "Fullscreen Enabled"
 
 [node name="HideCursor" type="VBoxContainer" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer"]

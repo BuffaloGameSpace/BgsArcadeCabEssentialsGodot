@@ -21,15 +21,22 @@ extends Control
 func _ready():
 	ProjectSettings.settings_changed.connect(_on_project_settings_changed)
 	# Fire once to ensure settings match at plugin start
-	_on_project_settings_changed()
+	_on_project_settings_changed.call_deferred()
+
 
 func _on_project_settings_changed() -> void:
-	launch_fullscreen.button_pressed = ProjectSettings.get("bgs_arcade_cab/general/force_fullscreen")
-	hide_cursor.button_pressed = ProjectSettings.get("bgs_arcade_cab/general/hide_cursor")
-	min_credits.value = ProjectSettings.get("bgs_arcade_cab/credits/minimum_required_credits")
-	free_play.button_pressed = ProjectSettings.get("bgs_arcade_cab/credits/free_play_enabled")
-	idle_quit_enabled.button_pressed = ProjectSettings.get("bgs_arcade_cab/idle_quit/enabled")
-	idle_quit_timeout.value = ProjectSettings.get("bgs_arcade_cab/idle_quit/timeout")
+	if ProjectSettings.has_setting(BgsCabConsts.Settings.General.force_fullscreen):
+		launch_fullscreen.button_pressed = ProjectSettings.get(BgsCabConsts.Settings.General.force_fullscreen)
+	if ProjectSettings.has_setting(BgsCabConsts.Settings.General.hide_cursor):
+		hide_cursor.button_pressed = ProjectSettings.get(BgsCabConsts.Settings.General.hide_cursor)
+	if ProjectSettings.has_setting(BgsCabConsts.Settings.Credits.minimum_credits):
+		min_credits.value = ProjectSettings.get(BgsCabConsts.Settings.Credits.minimum_credits)
+	if ProjectSettings.has_setting(BgsCabConsts.Settings.Credits.free_play_enabled):
+		free_play.button_pressed = ProjectSettings.get(BgsCabConsts.Settings.Credits.free_play_enabled)
+	if ProjectSettings.has_setting(BgsCabConsts.Settings.IdleQuit.enabled):
+		idle_quit_enabled.button_pressed = ProjectSettings.get(BgsCabConsts.Settings.IdleQuit.enabled)
+	if ProjectSettings.has_setting(BgsCabConsts.Settings.IdleQuit.timeout):
+		idle_quit_timeout.value = ProjectSettings.get(BgsCabConsts.Settings.IdleQuit.timeout)
 
 
 func _on_launch_fullscreen_check_box_toggled(toggled_on:bool):
@@ -40,20 +47,20 @@ func _on_launch_fullscreen_check_box_toggled(toggled_on:bool):
 
 
 func _on_hide_cursor_check_box_toggled(toggled_on:bool):
-	ProjectSettings.set("bgs_arcade_cab/general/hide_cursor", toggled_on)
+	ProjectSettings.set(BgsCabConsts.Settings.General.hide_cursor, toggled_on)
 
 
 func _on_minimum_credits_spin_box_value_changed(value):
-	ProjectSettings.set("bgs_arcade_cab/credits/minimum_required_credits", value as int)
+	ProjectSettings.set(BgsCabConsts.Settings.Credits.minimum_credits, value as int)
 
 
 func _on_free_play_check_box_toggled(toggled_on:bool):
-	ProjectSettings.set("bgs_arcade_cab/credits/free_play_enabled", toggled_on)
+	ProjectSettings.set(BgsCabConsts.Settings.Credits.free_play_enabled, toggled_on)
 
 
 func _on_idle_timer_check_box_toggled(toggled_on:bool):
-	ProjectSettings.set("bgs_arcade_cab/idle_quit/enabled", toggled_on)
+	ProjectSettings.set(BgsCabConsts.Settings.IdleQuit.enabled, toggled_on)
 
 
 func _on_idle_timeout_spin_box_value_changed(value):
-	ProjectSettings.set("bgs_arcade_cab/idle_quit/timeout", value as int)
+	ProjectSettings.set(BgsCabConsts.Settings.IdleQuit.timeout, value as int)

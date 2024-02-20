@@ -11,8 +11,6 @@ signal free_play_credit_added()
 ## Emitted when credits have been redeemed
 signal credits_redeemed()
 
-const setting_required_credits:= "bgs_arcade_cab/credits/minimum_required_credits"
-
 ## Currently available credits
 var credits:= 0:
 	set(value):
@@ -23,23 +21,23 @@ var credits:= 0:
 	get:
 		return credits
 
-var free_play_enabled:= false
+@onready var free_play_enabled:= ProjectSettings.get(BgsCabConsts.Settings.Credits.free_play_enabled)
 
 func _ready() -> void:
 	(func(): credits_changed.emit(credits)).call_deferred()
 
 
 func _input(event):
-	if event.is_action_pressed("bgs_insert_credit"):
+	if event.is_action_pressed(BgsCabConsts.PlayerInput.p1_insert_credit) || event.is_action_pressed(BgsCabConsts.PlayerInput.p2_insert_credit):
 		credits += 1
 		if free_play_enabled:
 			free_play_credit_added.emit()
-		if credits >= ProjectSettings.get_setting(setting_required_credits):
+		if credits >= ProjectSettings.get_setting(BgsCabConsts.Settings.Credits.minimum_credits):
 			enough_credits_added.emit()
 
 
 func redeem_credits():
-	var min_credits = ProjectSettings.get_setting(setting_required_credits)
+	var min_credits = ProjectSettings.get_setting(BgsCabConsts.Settings.Credits.minimum_credits)
 	if free_play_enabled || credits >= min_credits:
 		credits -= min_credits
 		credits_redeemed.emit()

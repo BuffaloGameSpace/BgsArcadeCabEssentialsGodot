@@ -4,15 +4,15 @@ extends TextureRect
 @export var device_id:= 0
 
 var _sprites = {
-	Vector2i(0, 0): preload("res://demo/assets/sprites/inputs/Stick Center.svg"),
-	Vector2i(1, 0): preload("res://demo/assets/sprites/inputs/Stick Right.svg"),
-	Vector2i(1, -1): preload("res://demo/assets/sprites/inputs/Stick Up Right.svg"),
-	Vector2i(0, -1): preload("res://demo/assets/sprites/inputs/Stick Up.svg"),
-	Vector2i(-1, -1): preload("res://demo/assets/sprites/inputs/Stick Up Left.svg"),
-	Vector2i(-1, 0): preload("res://demo/assets/sprites/inputs/Stick Left.svg"),
-	Vector2i(-1, 1): preload("res://demo/assets/sprites/inputs/Stick Down Left.svg"),
-	Vector2i(0, 1): preload("res://demo/assets/sprites/inputs/Stick Down.svg"),
-	Vector2i(1, 1): preload("res://demo/assets/sprites/inputs/Stick Down Right.svg"),
+	Vector2i(0, 0): preload("res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Center.svg"),
+	Vector2i(1, 0): preload("res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Right.svg"),
+	Vector2i(1, -1): preload("res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Up Right.svg"),
+	Vector2i(0, -1): preload("res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Up.svg"),
+	Vector2i(-1, -1): preload("res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Up Left.svg"),
+	Vector2i(-1, 0): preload("res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Left.svg"),
+	Vector2i(-1, 1): preload("res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Down Left.svg"),
+	Vector2i(0, 1): preload("res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Down.svg"),
+	Vector2i(1, 1): preload("res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Down Right.svg"),
 }
 
 var _pos: Vector2i
