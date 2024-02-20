@@ -123,7 +123,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
 max_value = 4.0
-value = 4.0
+value = 1.0
 rounded = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Credits/MarginContainer/VBoxContainer"]
@@ -139,7 +139,6 @@ text = "Free Play"
 [node name="FreePlayCheckBox" type="CheckBox" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Credits/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-button_pressed = true
 text = "Enabled"
 
 [node name="Idle Quit" type="VBoxContainer" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer"]
@@ -168,6 +167,7 @@ text = "Idle Timer"
 [node name="IdleTimerCheckBox" type="CheckBox" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Idle Quit/MarginContainer/VBoxContainer/Enabled"]
 layout_mode = 2
 size_flags_horizontal = 3
+button_pressed = true
 text = "Enabled"
 
 [node name="Timeout" type="HBoxContainer" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Idle Quit/MarginContainer/VBoxContainer"]
@@ -182,7 +182,7 @@ text = "Timeout"
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 300.0
-value = 45.0
+value = 30.0
 rounded = true
 suffix = "seconds"
 
@@ -207,6 +207,8 @@ split_offset = 250
 
 [node name="InputActionsTree" type="Tree" parent="Input Actions/MarginContainer/HSplitContainer"]
 layout_mode = 2
+columns = 4
+hide_root = true
 
 [node name="InputLayout" type="Control" parent="Input Actions/MarginContainer/HSplitContainer"]
 layout_mode = 2
