@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da33euumu3vb4"
-path="res://.godot/imported/Stick Up.svg-b2fffdbe6dbe2c5eef4e87b5e765dbac.ctex"
+uid="uid://c3kwkba1n212s"
+path="res://.godot/imported/Stick Up Right.svg-28f13a0ec9606dedb2b6afc2371d6523.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://demo/assets/sprites/inputs/Stick Up.svg"
-dest_files=["res://.godot/imported/Stick Up.svg-b2fffdbe6dbe2c5eef4e87b5e765dbac.ctex"]
+source_file="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Up Right.svg"
+dest_files=["res://.godot/imported/Stick Up Right.svg-28f13a0ec9606dedb2b6afc2371d6523.ctex"]
 
 [params]
 

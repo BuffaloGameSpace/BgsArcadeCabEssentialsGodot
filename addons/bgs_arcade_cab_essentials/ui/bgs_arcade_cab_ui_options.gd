@@ -31,6 +31,7 @@ func _on_project_settings_changed() -> void:
 	idle_quit_enabled.button_pressed = ProjectSettings.get("bgs_arcade_cab/idle_quit/enabled")
 	idle_quit_timeout.value = ProjectSettings.get("bgs_arcade_cab/idle_quit/timeout")
 
+
 func _on_launch_fullscreen_check_box_toggled(toggled_on:bool):
 	if toggled_on:
 		ProjectSettings.set("display/window/size/mode", DisplayServer.WINDOW_MODE_FULLSCREEN)

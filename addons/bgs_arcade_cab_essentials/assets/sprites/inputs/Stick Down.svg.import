@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdbr1i3wjexai"
-path="res://.godot/imported/Blank Button.svg-6bd5d864c5b672a92daea9349a0f30da.ctex"
+uid="uid://wgghe6kft275"
+path="res://.godot/imported/Stick Down.svg-4c1a946379d19872025370593b5c6467.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://demo/assets/sprites/inputs/Blank Button.svg"
-dest_files=["res://.godot/imported/Blank Button.svg-6bd5d864c5b672a92daea9349a0f30da.ctex"]
+source_file="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Down.svg"
+dest_files=["res://.godot/imported/Stick Down.svg-4c1a946379d19872025370593b5c6467.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6afm3viellje"]
 
 [ext_resource type="Script" path="res://demo/src/input_test/cab_stick.gd" id="1_wl1hv"]
-[ext_resource type="Texture2D" uid="uid://c71vivv77kirl" path="res://demo/assets/sprites/inputs/Stick Center.svg" id="1_wsytm"]
+[ext_resource type="Texture2D" uid="uid://c71vivv77kirl" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Center.svg" id="1_wsytm"]
 
 [node name="CabStick" type="TextureRect"]
 anchors_preset = -1

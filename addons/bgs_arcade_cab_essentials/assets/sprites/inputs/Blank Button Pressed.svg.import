@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c71vivv77kirl"
-path="res://.godot/imported/Stick Center.svg-562b5624092c0367fb0d6a53e348b9fa.ctex"
+uid="uid://v8iwu054d3qo"
+path="res://.godot/imported/Blank Button Pressed.svg-64d1e4144f1d5443c50f6728f27d1815.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://demo/assets/sprites/inputs/Stick Center.svg"
-dest_files=["res://.godot/imported/Stick Center.svg-562b5624092c0367fb0d6a53e348b9fa.ctex"]
+source_file="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Blank Button Pressed.svg"
+dest_files=["res://.godot/imported/Blank Button Pressed.svg-64d1e4144f1d5443c50f6728f27d1815.ctex"]
 
 [params]
 

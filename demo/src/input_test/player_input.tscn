@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://demo/src/input_test/player_input.gd" id="1_1blyh"]
 [ext_resource type="PackedScene" uid="uid://b6afm3viellje" path="res://demo/src/input_test/cab_stick.tscn" id="2_oa5ly"]
-[ext_resource type="Texture2D" uid="uid://bdbr1i3wjexai" path="res://demo/assets/sprites/inputs/Blank Button.svg" id="4_4xv7e"]
+[ext_resource type="Texture2D" uid="uid://bdbr1i3wjexai" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Blank Button.svg" id="4_4xv7e"]
 [ext_resource type="Script" path="res://demo/src/input_test/cab_button.gd" id="5_h0psa"]
-[ext_resource type="Texture2D" uid="uid://v8iwu054d3qo" path="res://demo/assets/sprites/inputs/Blank Button Pressed.svg" id="6_amskm"]
+[ext_resource type="Texture2D" uid="uid://v8iwu054d3qo" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Blank Button Pressed.svg" id="6_amskm"]
 
 [node name="PlayerInput" type="Control" node_paths=PackedStringArray("stick", "buttons")]
 layout_mode = 3

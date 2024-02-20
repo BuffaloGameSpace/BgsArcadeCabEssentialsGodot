@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dadrfvxv6gxgn"
-path="res://.godot/imported/Coin Mech Inserted.svg-9ca67dc7c0dad66926f121312f0123d8.ctex"
+uid="uid://c7pywxpcymrja"
+path="res://.godot/imported/Stick Down Right.svg-7fbc0eac25b0de6e9b9e150e14d17652.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://demo/assets/sprites/inputs/Coin Mech Inserted.svg"
-dest_files=["res://.godot/imported/Coin Mech Inserted.svg-9ca67dc7c0dad66926f121312f0123d8.ctex"]
+source_file="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Down Right.svg"
+dest_files=["res://.godot/imported/Stick Down Right.svg-7fbc0eac25b0de6e9b9e150e14d17652.ctex"]
 
 [params]
 

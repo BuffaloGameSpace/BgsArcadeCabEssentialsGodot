@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b01wg2af6jbll"
-path="res://.godot/imported/Stick Right.svg-4734f85f83924a04ec98903dcef7d64e.ctex"
+path="res://.godot/imported/Stick Right.svg-b19533f31eb34f36cda5ffc905ac1371.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://demo/assets/sprites/inputs/Stick Right.svg"
-dest_files=["res://.godot/imported/Stick Right.svg-4734f85f83924a04ec98903dcef7d64e.ctex"]
+source_file="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Right.svg"
+dest_files=["res://.godot/imported/Stick Right.svg-b19533f31eb34f36cda5ffc905ac1371.ctex"]
 
 [params]
 

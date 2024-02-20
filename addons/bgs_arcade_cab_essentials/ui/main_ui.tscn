@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://bnuvqilh6jpnu"]
 
 [ext_resource type="Script" path="res://addons/bgs_arcade_cab_essentials/ui/bgs_arcade_cab_ui_options.gd" id="1_d2i1v"]
-[ext_resource type="Texture2D" uid="uid://bxjnbm7f04wpq" path="res://demo/assets/sprites/inputs/Stick Base.svg" id="2_cty51"]
-[ext_resource type="Texture2D" uid="uid://bdbr1i3wjexai" path="res://demo/assets/sprites/inputs/Blank Button.svg" id="3_m3mvg"]
-[ext_resource type="Texture2D" uid="uid://mlcpuheaqyr8" path="res://demo/assets/sprites/inputs/P1 Button.svg" id="4_rckw2"]
-[ext_resource type="Texture2D" uid="uid://dij7420jonnq2" path="res://demo/assets/sprites/inputs/P2 Button.svg" id="5_sdfdd"]
-[ext_resource type="Texture2D" uid="uid://ctp0rj7bao06s" path="res://demo/assets/sprites/inputs/Coin Mech.svg" id="6_dcmbx"]
+[ext_resource type="Texture2D" uid="uid://bxjnbm7f04wpq" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Base.svg" id="2_mq3xj"]
+[ext_resource type="Texture2D" uid="uid://bdbr1i3wjexai" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Blank Button.svg" id="3_tpbw3"]
+[ext_resource type="Texture2D" uid="uid://mlcpuheaqyr8" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/P1 Button.svg" id="4_y4ohl"]
+[ext_resource type="Texture2D" uid="uid://dij7420jonnq2" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/P2 Button.svg" id="5_q5n8t"]
+[ext_resource type="Texture2D" uid="uid://ctp0rj7bao06s" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Coin Mech.svg" id="6_j1wcd"]
 
 [sub_resource type="Theme" id="Theme_p4apt"]
 
@@ -73,7 +73,6 @@ text = "Force Fullscreen"
 [node name="LaunchFullscreenCheckBox" type="CheckBox" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/LaunchFullscreen"]
 layout_mode = 2
 size_flags_horizontal = 3
-button_pressed = true
 text = "Fullscreen Enabled"
 
 [node name="HideCursor" type="VBoxContainer" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer"]
@@ -253,7 +252,7 @@ grow_vertical = 2
 self_modulate = Color(1, 1, 1, 0.12549)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("2_cty51")
+texture = ExtResource("2_mq3xj")
 expand_mode = 2
 stretch_mode = 5
 
@@ -374,7 +373,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_m3mvg")
+texture = ExtResource("3_tpbw3")
 expand_mode = 1
 stretch_mode = 5
 
@@ -402,7 +401,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_m3mvg")
+texture = ExtResource("3_tpbw3")
 expand_mode = 1
 stretch_mode = 5
 
@@ -440,7 +439,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_m3mvg")
+texture = ExtResource("3_tpbw3")
 expand_mode = 1
 stretch_mode = 5
 
@@ -468,7 +467,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_m3mvg")
+texture = ExtResource("3_tpbw3")
 expand_mode = 1
 stretch_mode = 5
 
@@ -506,7 +505,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_m3mvg")
+texture = ExtResource("3_tpbw3")
 expand_mode = 1
 stretch_mode = 5
 
@@ -534,7 +533,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_m3mvg")
+texture = ExtResource("3_tpbw3")
 expand_mode = 1
 stretch_mode = 5
 
@@ -588,7 +587,7 @@ text = "P1"
 self_modulate = Color(1, 1, 1, 0.12549)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("4_rckw2")
+texture = ExtResource("4_y4ohl")
 expand_mode = 2
 stretch_mode = 5
 
@@ -615,7 +614,7 @@ text = "P2"
 self_modulate = Color(1, 1, 1, 0.12549)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("5_sdfdd")
+texture = ExtResource("5_q5n8t")
 expand_mode = 2
 stretch_mode = 5
 
@@ -648,7 +647,7 @@ text = "Coin
 self_modulate = Color(1, 1, 1, 0.12549)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("6_dcmbx")
+texture = ExtResource("6_j1wcd")
 expand_mode = 2
 stretch_mode = 5
 
@@ -676,7 +675,7 @@ text = "Coin
 self_modulate = Color(1, 1, 1, 0.12549)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("6_dcmbx")
+texture = ExtResource("6_j1wcd")
 expand_mode = 2
 stretch_mode = 5
 

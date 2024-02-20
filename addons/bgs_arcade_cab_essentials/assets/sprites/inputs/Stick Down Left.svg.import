@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7pywxpcymrja"
-path="res://.godot/imported/Stick Down Right.svg-a5a790383372494cb3f1db94841ded9d.ctex"
+uid="uid://bdweluxv4sdpx"
+path="res://.godot/imported/Stick Down Left.svg-d30a94d83410ae479376982ebada968a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://demo/assets/sprites/inputs/Stick Down Right.svg"
-dest_files=["res://.godot/imported/Stick Down Right.svg-a5a790383372494cb3f1db94841ded9d.ctex"]
+source_file="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Down Left.svg"
+dest_files=["res://.godot/imported/Stick Down Left.svg-d30a94d83410ae479376982ebada968a.ctex"]
 
 [params]
 

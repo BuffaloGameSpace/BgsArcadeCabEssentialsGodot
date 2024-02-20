@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2jukdvj1hy1s"
-path="res://.godot/imported/Stick Up Left.svg-bf89d985a4d0467f24769a390094bd9e.ctex"
+uid="uid://bp1mkwoqaveyx"
+path="res://.godot/imported/P1 Button Pressed.svg-9567a686e2f2c81fee33f2e55fc9c261.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://demo/assets/sprites/inputs/Stick Up Left.svg"
-dest_files=["res://.godot/imported/Stick Up Left.svg-bf89d985a4d0467f24769a390094bd9e.ctex"]
+source_file="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/P1 Button Pressed.svg"
+dest_files=["res://.godot/imported/P1 Button Pressed.svg-9567a686e2f2c81fee33f2e55fc9c261.ctex"]
 
 [params]
 

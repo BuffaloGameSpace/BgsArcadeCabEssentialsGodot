@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxjnbm7f04wpq"
-path="res://.godot/imported/Stick Base.svg-76f6101cf2a070c454911e30256e2cc4.ctex"
+uid="uid://dadrfvxv6gxgn"
+path="res://.godot/imported/Coin Mech Inserted.svg-20b92eefb07d0a11006bc23019f124fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://demo/assets/sprites/inputs/Stick Base.svg"
-dest_files=["res://.godot/imported/Stick Base.svg-76f6101cf2a070c454911e30256e2cc4.ctex"]
+source_file="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Coin Mech Inserted.svg"
+dest_files=["res://.godot/imported/Coin Mech Inserted.svg-20b92eefb07d0a11006bc23019f124fd.ctex"]
 
 [params]
 
