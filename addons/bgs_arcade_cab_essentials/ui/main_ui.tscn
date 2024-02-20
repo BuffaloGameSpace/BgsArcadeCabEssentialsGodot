@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnuvqilh6jpnu"]
+[gd_scene load_steps=10 format=3 uid="uid://bnuvqilh6jpnu"]
 
 [ext_resource type="Script" path="res://addons/bgs_arcade_cab_essentials/ui/bgs_arcade_cab_ui_options.gd" id="1_d2i1v"]
+[ext_resource type="Script" path="res://addons/bgs_arcade_cab_essentials/ui/bgs_arcade_cab_ui_input_actions.gd" id="2_3ysxe"]
 [ext_resource type="Texture2D" uid="uid://bxjnbm7f04wpq" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Base.svg" id="2_mq3xj"]
 [ext_resource type="Texture2D" uid="uid://bdbr1i3wjexai" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Blank Button.svg" id="3_tpbw3"]
 [ext_resource type="Texture2D" uid="uid://mlcpuheaqyr8" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/P1 Button.svg" id="4_y4ohl"]
 [ext_resource type="Texture2D" uid="uid://dij7420jonnq2" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/P2 Button.svg" id="5_q5n8t"]
 [ext_resource type="Texture2D" uid="uid://ctp0rj7bao06s" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Coin Mech.svg" id="6_j1wcd"]
+[ext_resource type="Script" path="res://addons/bgs_arcade_cab_essentials/ui/input_add_action_window.gd" id="8_skxtg"]
 
 [sub_resource type="Theme" id="Theme_p4apt"]
 
@@ -188,8 +190,11 @@ value = 30.0
 rounded = true
 suffix = "seconds"
 
-[node name="Input Actions" type="Control" parent="."]
+[node name="Input Actions" type="Control" parent="." node_paths=PackedStringArray("add_action_window", "input_action_tree")]
 layout_mode = 2
+script = ExtResource("2_3ysxe")
+add_action_window = NodePath("AddActionWindow")
+input_action_tree = NodePath("MarginContainer/HSplitContainer/InputActionsTree")
 
 [node name="MarginContainer" type="MarginContainer" parent="Input Actions"]
 layout_mode = 1
@@ -680,9 +685,61 @@ texture = ExtResource("6_j1wcd")
 expand_mode = 2
 stretch_mode = 5
 
+[node name="AddActionWindow" type="Window" parent="Input Actions" node_paths=PackedStringArray("add_button", "action_line_edit", "controller_option")]
+title = "BGS Arcade Cab - Add Action"
+initial_position = 1
+size = Vector2i(400, 100)
+visible = false
+transient = true
+script = ExtResource("8_skxtg")
+add_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/AddButton")
+action_line_edit = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ActionLineEdit")
+controller_option = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ControllerOptionButton")
+
+[node name="PanelContainer" type="PanelContainer" parent="Input Actions/AddActionWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Input Actions/AddActionWindow/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Input Actions/AddActionWindow/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Input Actions/AddActionWindow/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ActionLineEdit" type="LineEdit" parent="Input Actions/AddActionWindow/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ControllerOptionButton" type="OptionButton" parent="Input Actions/AddActionWindow/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Any Player"
+popup/item_0/id = 2
+popup/item_1/text = "Player 1"
+popup/item_1/id = 0
+popup/item_2/text = "Player 2"
+popup/item_2/id = 1
+
+[node name="AddButton" type="Button" parent="Input Actions/AddActionWindow/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Add Action"
+
 [connection signal="toggled" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/LaunchFullscreen/LaunchFullscreenCheckBox" to="Game Options" method="_on_launch_fullscreen_check_box_toggled"]
 [connection signal="toggled" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/HideCursor/HBoxContainer/HideCursorCheckBox" to="Game Options" method="_on_hide_cursor_check_box_toggled"]
 [connection signal="value_changed" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Credits/MarginContainer/VBoxContainer/MinimumCredits/MinimumCreditsSpinBox" to="Game Options" method="_on_minimum_credits_spin_box_value_changed"]
 [connection signal="toggled" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Credits/MarginContainer/VBoxContainer/HBoxContainer/FreePlayCheckBox" to="Game Options" method="_on_free_play_check_box_toggled"]
 [connection signal="toggled" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Idle Quit/MarginContainer/VBoxContainer/Enabled/IdleTimerCheckBox" to="Game Options" method="_on_idle_timer_check_box_toggled"]
 [connection signal="value_changed" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Idle Quit/MarginContainer/VBoxContainer/Timeout/IdleTimeoutSpinBox" to="Game Options" method="_on_idle_timeout_spin_box_value_changed"]
+[connection signal="close_requested" from="Input Actions/AddActionWindow" to="Input Actions/AddActionWindow" method="_on_close_requested"]
+[connection signal="text_changed" from="Input Actions/AddActionWindow/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ActionLineEdit" to="Input Actions/AddActionWindow" method="_on_action_line_edit_text_changed"]
+[connection signal="pressed" from="Input Actions/AddActionWindow/PanelContainer/MarginContainer/VBoxContainer/AddButton" to="Input Actions/AddActionWindow" method="_on_add_button_pressed"]

@@ -7,4 +7,4 @@ func _ready():
 
 
 func _on_credits_changed(credits:int) -> void:
-	text = "%d / %d" % [credits, ProjectSettings.get("bgs_arcade_cab/credits/minimum_required_credits")]
+	text = "%d / %d" % [credits, ProjectSettings.get(BgsCabConsts.Settings.Credits.minimum_credits)]

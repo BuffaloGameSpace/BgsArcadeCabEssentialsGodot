@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://demo/src/input_test/player_input.gd" id="1_1blyh"]
 [ext_resource type="PackedScene" uid="uid://b6afm3viellje" path="res://demo/src/input_test/cab_stick.tscn" id="2_oa5ly"]
-[ext_resource type="Texture2D" uid="uid://bdbr1i3wjexai" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Blank Button.svg" id="4_4xv7e"]
+[ext_resource type="Texture2D" uid="uid://bdbr1i3wjexai" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Blank Button.svg" id="3_wvrld"]
+[ext_resource type="Texture2D" uid="uid://v8iwu054d3qo" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Blank Button Pressed.svg" id="5_03jcm"]
 [ext_resource type="Script" path="res://demo/src/input_test/cab_button.gd" id="5_h0psa"]
-[ext_resource type="Texture2D" uid="uid://v8iwu054d3qo" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Blank Button Pressed.svg" id="6_amskm"]
 
 [node name="PlayerInput" type="Control" node_paths=PackedStringArray("stick", "buttons")]
 layout_mode = 3
@@ -36,13 +36,13 @@ anchor_left = 0.460069
 anchor_top = 0.197393
 anchor_right = 0.635417
 anchor_bottom = 0.573557
-texture = ExtResource("4_4xv7e")
+texture = ExtResource("3_wvrld")
 expand_mode = 1
 stretch_mode = 5
 script = ExtResource("5_h0psa")
-action = "bgs_x"
-released_texture = ExtResource("4_4xv7e")
-pressed_texture = ExtResource("6_amskm")
+action = "bgs_btn_x"
+released_texture = ExtResource("3_wvrld")
+pressed_texture = ExtResource("5_03jcm")
 metadata/_edit_use_anchors_ = true
 
 [node name="CabButtonY" type="TextureRect" parent="."]
@@ -51,13 +51,13 @@ anchor_left = 0.641493
 anchor_top = 0.0763501
 anchor_right = 0.81684
 anchor_bottom = 0.452514
-texture = ExtResource("4_4xv7e")
+texture = ExtResource("3_wvrld")
 expand_mode = 1
 stretch_mode = 5
 script = ExtResource("5_h0psa")
-action = "bgs_y"
-released_texture = ExtResource("4_4xv7e")
-pressed_texture = ExtResource("6_amskm")
+action = "bgs_btn_y"
+released_texture = ExtResource("3_wvrld")
+pressed_texture = ExtResource("5_03jcm")
 metadata/_edit_use_anchors_ = true
 
 [node name="CabButtonZ" type="TextureRect" parent="."]
@@ -66,13 +66,13 @@ anchor_left = 0.822917
 anchor_top = 0.0242086
 anchor_right = 0.998264
 anchor_bottom = 0.400372
-texture = ExtResource("4_4xv7e")
+texture = ExtResource("3_wvrld")
 expand_mode = 1
 stretch_mode = 5
 script = ExtResource("5_h0psa")
-action = "bgs_z"
-released_texture = ExtResource("4_4xv7e")
-pressed_texture = ExtResource("6_amskm")
+action = "bgs_btn_z"
+released_texture = ExtResource("3_wvrld")
+pressed_texture = ExtResource("5_03jcm")
 metadata/_edit_use_anchors_ = true
 
 [node name="CabButtonA" type="TextureRect" parent="."]
@@ -81,13 +81,13 @@ anchor_left = 0.460069
 anchor_top = 0.614525
 anchor_right = 0.635417
 anchor_bottom = 0.990689
-texture = ExtResource("4_4xv7e")
+texture = ExtResource("3_wvrld")
 expand_mode = 1
 stretch_mode = 5
 script = ExtResource("5_h0psa")
-action = "bgs_a"
-released_texture = ExtResource("4_4xv7e")
-pressed_texture = ExtResource("6_amskm")
+action = "bgs_btn_a"
+released_texture = ExtResource("3_wvrld")
+pressed_texture = ExtResource("5_03jcm")
 metadata/_edit_use_anchors_ = true
 
 [node name="CabButtonB" type="TextureRect" parent="."]
@@ -96,13 +96,13 @@ anchor_left = 0.641493
 anchor_top = 0.493482
 anchor_right = 0.81684
 anchor_bottom = 0.869646
-texture = ExtResource("4_4xv7e")
+texture = ExtResource("3_wvrld")
 expand_mode = 1
 stretch_mode = 5
 script = ExtResource("5_h0psa")
-action = "bgs_b"
-released_texture = ExtResource("4_4xv7e")
-pressed_texture = ExtResource("6_amskm")
+action = "bgs_btn_b"
+released_texture = ExtResource("3_wvrld")
+pressed_texture = ExtResource("5_03jcm")
 metadata/_edit_use_anchors_ = true
 
 [node name="CabButtonC" type="TextureRect" parent="."]
@@ -111,11 +111,11 @@ anchor_left = 0.822917
 anchor_top = 0.441341
 anchor_right = 0.998264
 anchor_bottom = 0.817505
-texture = ExtResource("4_4xv7e")
+texture = ExtResource("3_wvrld")
 expand_mode = 1
 stretch_mode = 5
 script = ExtResource("5_h0psa")
-action = "bgs_c"
-released_texture = ExtResource("4_4xv7e")
-pressed_texture = ExtResource("6_amskm")
+action = "bgs_btn_c"
+released_texture = ExtResource("3_wvrld")
+pressed_texture = ExtResource("5_03jcm")
 metadata/_edit_use_anchors_ = true

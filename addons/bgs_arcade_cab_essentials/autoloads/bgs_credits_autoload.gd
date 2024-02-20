@@ -27,8 +27,8 @@ func _ready() -> void:
 	(func(): credits_changed.emit(credits)).call_deferred()
 
 
-func _input(event):
-	if event.is_action_pressed(BgsCabConsts.PlayerInput.p1_insert_credit) || event.is_action_pressed(BgsCabConsts.PlayerInput.p2_insert_credit):
+func _unhandled_input(event):
+	if event.is_action_pressed(BgsCabConsts.PlayerInput.InputActions.insert_credit + "_p1") || event.is_action_pressed(BgsCabConsts.PlayerInput.InputActions.insert_credit + "_p2"):
 		credits += 1
 		if free_play_enabled:
 			free_play_credit_added.emit()

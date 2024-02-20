@@ -1,6 +1,6 @@
 extends Control
 
-@export var device_id:= 0
+@export_range(1, 2) var player:= 1
 
 @export_group("Controls")
 @export var stick:CabStick
@@ -8,6 +8,6 @@ extends Control
 
 
 func _ready():
-	stick.device_id = device_id
+	stick.player = player
 	for button in buttons:
-		button.device_id = device_id
+		button.player = player

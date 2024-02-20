@@ -40,10 +40,7 @@ func _on_project_settings_changed() -> void:
 
 
 func _on_launch_fullscreen_check_box_toggled(toggled_on:bool):
-	if toggled_on:
-		ProjectSettings.set("display/window/size/mode", DisplayServer.WINDOW_MODE_FULLSCREEN)
-	else:
-		ProjectSettings.set("display/window/size/mode", DisplayServer.WINDOW_MODE_WINDOWED)
+	ProjectSettings.set(BgsCabConsts.Settings.General.force_fullscreen, toggled_on)
 
 
 func _on_hide_cursor_check_box_toggled(toggled_on:bool):

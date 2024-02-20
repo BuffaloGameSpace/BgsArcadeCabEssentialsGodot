@@ -1,24 +1,23 @@
 class_name CabButton
 extends TextureRect
 
-@export var device_id:= 0
+@export_range(1, 2) var player:= 1
 @export_enum(
-	"bgs_a",
-	"bgs_b",
-	"bgs_c",
-	"bgs_x",
-	"bgs_y",
-	"bgs_z",
-	"bgs_p1_start",
-	"bgs_p2_start",
-	) var action:String
+	"bgs_btn_a",
+	"bgs_btn_b",
+	"bgs_btn_c",
+	"bgs_btn_x",
+	"bgs_btn_y",
+	"bgs_btn_z",
+	"bgs_start",
+	"bgs_insert_credit",
+) var action:String
 @export var released_texture:CompressedTexture2D
 @export var pressed_texture:CompressedTexture2D
 
 
-func _input(event):
-	if event.device == device_id:
-		if event.is_action_pressed(action):
-			texture = pressed_texture
-		if event.is_action_released(action):
-			texture = released_texture
+func _unhandled_input(event):
+	if event.is_action_pressed("%s_p%d" % [action, player]):
+		texture = pressed_texture
+	if event.is_action_released("%s_p%d" % [action, player]):
+		texture = released_texture

@@ -28,71 +28,33 @@ func _exit_tree():
 #region Plugin Setup
 
 func _setup_input() -> void:
-	# General controller button inputs
-	for button in BgsCabConsts.PlayerInput.general_buttons.keys():
+	for action in BgsCabConsts.PlayerInput.mappings:
 		var input_info = {
 			"deadzone": 0.5,
 			"events": [],
 		}
-		for btn in BgsCabConsts.PlayerInput.general_buttons[button]:
-			var event = InputEventJoypadButton.new()
-			event.button_index = btn
-			event.device = -1
-			input_info["events"].append(event)
-		ProjectSettings.set_setting("input/%s" % button, input_info)
-	# General axis inputs
-	for axis in BgsCabConsts.PlayerInput.general_axis.keys():
-		var input_info = {
-			"deadzone": 0.5,
-			"events": [],
-		}
-		for input in BgsCabConsts.PlayerInput.general_axis[axis]:
-			var event = InputEventJoypadMotion.new()
-			event.axis = input
-			event.device = -1
-			input_info["events"].append(event)
-		ProjectSettings.set_setting("input/%s" % axis, input_info)
-	
-	# Start buttons
-	var p1_start_event = InputEventJoypadButton.new()
-	var p2_start_event = InputEventJoypadButton.new()
-	p1_start_event.button_index = JOY_BUTTON_START
-	p2_start_event.button_index = JOY_BUTTON_START
-	p1_start_event.device = BgsCabConsts.PlayerInput.p1_device
-	p2_start_event.device = BgsCabConsts.PlayerInput.p2_device
-	var p1_start_input = {
-		"deadzone": 0.5,
-		"events": [p1_start_event],
-	}
-	var p2_start_input = {
-		"deadzone": 0.5,
-		"events": [p2_start_event]
-	}
-	ProjectSettings.set_setting("input/%s" % BgsCabConsts.PlayerInput.p1_start, p1_start_input)
-	ProjectSettings.set_setting("input/%s" % BgsCabConsts.PlayerInput.p2_start, p2_start_input)
-	
-	# Coin op
-	var p1_insert_credit_event = InputEventJoypadButton.new()
-	p1_insert_credit_event.button_index = JOY_BUTTON_BACK
-	p1_insert_credit_event.device = BgsCabConsts.PlayerInput.p1_device
-	var p1_insert_credit_event_debug = InputEventKey.new()
-	p1_insert_credit_event_debug.keycode = KEY_PLUS
-	var p1_insert_credit_input = {
-		"deadzone": 0.5,
-		"events": [p1_insert_credit_event, p1_insert_credit_event_debug]
-	}
-	ProjectSettings.set_setting("input/%s" % BgsCabConsts.PlayerInput.p1_insert_credit, p1_insert_credit_input)
-	
-	var p2_insert_credit_event = InputEventJoypadButton.new()
-	p2_insert_credit_event.button_index = JOY_BUTTON_BACK
-	p2_insert_credit_event.device = BgsCabConsts.PlayerInput.p2_device
-	var p2_insert_credit_event_debug = InputEventKey.new()
-	p2_insert_credit_event_debug.keycode = KEY_INSERT
-	var p2_insert_credit_input = {
-		"deadzone": 0.5,
-		"events": [p2_insert_credit_event, p2_insert_credit_event_debug]
-	}
-	ProjectSettings.set_setting("input/%s" % BgsCabConsts.PlayerInput.p2_insert_credit, p2_insert_credit_input)
+		var device = BgsCabConsts.PlayerInput.mappings[action][BgsCabConsts.PlayerInput.MappingKeys.device]
+		# Joypad Buttons
+		if BgsCabConsts.PlayerInput.mappings[action].has(BgsCabConsts.PlayerInput.MappingKeys.buttons):
+			for button in BgsCabConsts.PlayerInput.mappings[action][BgsCabConsts.PlayerInput.MappingKeys.buttons]:
+				var button_event = InputEventJoypadButton.new()
+				button_event.button_index = button
+				button_event.device = device
+				input_info["events"].append(button_event)
+		if BgsCabConsts.PlayerInput.mappings[action].has(BgsCabConsts.PlayerInput.MappingKeys.axis):
+			for axis in BgsCabConsts.PlayerInput.mappings[action][BgsCabConsts.PlayerInput.MappingKeys.axis]:
+				var axis_event = InputEventJoypadMotion.new()
+				axis_event.axis = axis
+				axis_event.device = device
+				input_info["events"].append(axis_event)
+		if BgsCabConsts.PlayerInput.mappings[action].has(BgsCabConsts.PlayerInput.MappingKeys.keys):
+			for key in BgsCabConsts.PlayerInput.mappings[action][BgsCabConsts.PlayerInput.MappingKeys.keys]:
+				var key_event = InputEventKey.new()
+				key_event.key_label = key
+				key_event.device = -1 # Keyboard events are always all keyboards (should only be one)
+				input_info["events"].append(key_event)
+		ProjectSettings.set("input/%s" % action, input_info)
+	InputMap.load_from_project_settings()
 
 
 func _setup_credits_autoload() -> void:
@@ -162,14 +124,10 @@ func _setup_ui() -> void:
 #region Plugin Cleanup
 
 func _cleanup_input() -> void:
-	for input in BgsCabConsts.PlayerInput.general_buttons.keys():
-		ProjectSettings.set_setting("input/%s" % input, null)
-	for input in BgsCabConsts.PlayerInput.general_axis.keys():
-		ProjectSettings.set_setting("input/%s" % input, null)
-	ProjectSettings.set_setting("input/%s" % BgsCabConsts.PlayerInput.p1_start, null)
-	ProjectSettings.set_setting("input/%s" % BgsCabConsts.PlayerInput.p2_start, null)
-	ProjectSettings.set_setting("input/%s" % BgsCabConsts.PlayerInput.p1_insert_credit, null)
-	ProjectSettings.set_setting("input/%s" % BgsCabConsts.PlayerInput.p2_insert_credit, null)
+	for action in BgsCabConsts.PlayerInput.mappings:
+		ProjectSettings.set("input/%s" % action, null)
+	InputMap.load_from_project_settings()
+
 
 func _cleanup_credits_autoload() -> void:
 	if ProjectSettings.has_setting(BgsCabConsts.Settings.Credits.minimum_credits):

@@ -45,7 +45,7 @@ texture = ExtResource("1_qsklv")
 expand_mode = 3
 stretch_mode = 5
 script = ExtResource("5_iw1wu")
-action = "bgs_p1_start"
+action = "bgs_start"
 released_texture = ExtResource("1_qsklv")
 pressed_texture = ExtResource("3_oukgb")
 
@@ -56,8 +56,7 @@ texture = ExtResource("4_v342k")
 expand_mode = 3
 stretch_mode = 5
 script = ExtResource("5_iw1wu")
-device_id = 1
-action = "bgs_p2_start"
+action = "bgs_start"
 released_texture = ExtResource("4_v342k")
 pressed_texture = ExtResource("5_rvawm")
 
@@ -94,7 +93,7 @@ device_id = 1
 [node name="PlayerInput2" parent="VBoxContainer/PlayerInputContainer/Device1" instance=ExtResource("1_vyapc")]
 modulate = Color(0.654902, 0, 0.203922, 1)
 layout_mode = 2
-device_id = 1
+player = 2
 
 [node name="BottomLabelContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
