@@ -26,8 +26,8 @@ BgsGeneralConfig="*res://addons/bgs_arcade_cab_essentials/autoloads/bgs_general_
 
 [bgs_arcade_cab]
 
-general/hide_cursor=false
-general/force_fullscreen=false
+general/hide_cursor=true
+general/force_fullscreen=true
 credits/minimum_required_credits=1
 credits/free_play_enabled=false
 idle_quit/enabled=true
