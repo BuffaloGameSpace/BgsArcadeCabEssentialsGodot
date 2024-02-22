@@ -11,6 +11,7 @@ keycode = 4194439
 unicode = 49
 
 [resource]
+resource_name = "bgs_a_p2"
 script = ExtResource("1_kshto")
 name = &"bgs_a_p2"
 joy_button_events = Array[InputEventJoypadButton]([SubResource("InputEventJoypadButton_n328b")])

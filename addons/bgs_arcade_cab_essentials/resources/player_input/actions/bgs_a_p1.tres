@@ -10,6 +10,7 @@ keycode = 74
 unicode = 106
 
 [resource]
+resource_name = "bgs_a_p1"
 script = ExtResource("1_85eec")
 name = &"bgs_a_p1"
 joy_button_events = Array[InputEventJoypadButton]([SubResource("InputEventJoypadButton_n328b")])
