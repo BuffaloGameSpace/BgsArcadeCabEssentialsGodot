@@ -1017,3 +1017,4 @@ stretch_mode = 5
 [connection signal="toggled" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Credits/MarginContainer/VBoxContainer/HBoxContainer/FreePlayCheckBox" to="Game Options" method="_on_free_play_check_box_toggled"]
 [connection signal="toggled" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Idle Quit/MarginContainer/VBoxContainer/Enabled/IdleTimerCheckBox" to="Game Options" method="_on_idle_timer_check_box_toggled"]
 [connection signal="value_changed" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Idle Quit/MarginContainer/VBoxContainer/Timeout/IdleTimeoutSpinBox" to="Game Options" method="_on_idle_timeout_spin_box_value_changed"]
+[connection signal="nothing_selected" from="Input Actions/MarginContainer/HSplitContainer/InputActionsTree" to="Input Actions" method="_on_input_actions_tree_nothing_selected"]
