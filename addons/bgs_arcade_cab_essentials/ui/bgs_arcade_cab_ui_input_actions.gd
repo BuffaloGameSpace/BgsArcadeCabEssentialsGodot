@@ -46,21 +46,23 @@ func _update_buttons_for_action(input_action:StringName) -> void:
 		button.button_pressed = true
 
 
-func _get_buttons_matching_action(action:Dictionary) -> PlayerButton:
+func _get_buttons_matching_action(action:Dictionary) -> Array[PlayerButton]:
 	if !action.has("events"):
-		return null
-	var joy_buttons:Array[JoyButton]
-	var joy_axis:Array[JoyAxis]
-	var keys:Array[Key]
-	for event in action["events"]:
-		if event is InputEventJoypadButton:
-			joy_buttons.append(event.button_index)
-		if event is InputEventJoypadMotion:
-			joy_axis.append(event.axis)
-		if event is InputEventKey:
-			keys.append(event.physical_keycode)
-	var result = buttons.filter(func(x:PlayerButton): return x.joy_button_inputs == joy_buttons && x.joy_axis_inputs == joy_axis && x.key_inputs == keys)
+		printerr("Action has no events!")
+		return []
+	var result:Array[PlayerButton] = []
+	for button in buttons:
+		if _get_button_events(button) == action["events"]:
+			result.append(button)
 	return result
+
+
+func _get_button_events(player_button:PlayerButton) -> Array:
+	var temp_events:= []
+	temp_events.append_array(player_button.action.joy_button_events)
+	temp_events.append_array(player_button.action.joy_motion_events)
+	temp_events.append_array(player_button.action.key_events)
+	return temp_events
 
 
 func _on_input_actions_tree_nothing_selected():

@@ -28,7 +28,7 @@ func _ready() -> void:
 
 
 func _unhandled_input(event):
-	if event.is_action_pressed(BgsCabConsts.PlayerInput.InputActions.insert_credit + "_p1") || event.is_action_pressed(BgsCabConsts.PlayerInput.InputActions.insert_credit + "_p2"):
+	if event.is_action_pressed("bgs_insert_credit_p1") || event.is_action_pressed("bgs_insert_credit_p2"):
 		credits += 1
 		if free_play_enabled:
 			free_play_credit_added.emit()
