@@ -1,0 +1,407 @@
+[gd_scene load_steps=7 format=3 uid="uid://b47b2a8kvhjep"]
+
+[ext_resource type="Texture2D" uid="uid://bxjnbm7f04wpq" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Base.svg" id="1_uvv2e"]
+[ext_resource type="Texture2D" uid="uid://bdbr1i3wjexai" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Blank Button.svg" id="2_exhu2"]
+[ext_resource type="Script" path="res://addons/bgs_arcade_cab_essentials/ui/PlayerButton.gd" id="2_xfwqb"]
+[ext_resource type="Texture2D" uid="uid://mlcpuheaqyr8" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/P1 Button.svg" id="3_5cjd5"]
+[ext_resource type="Texture2D" uid="uid://ctp0rj7bao06s" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Coin Mech.svg" id="4_60rxe"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_kvhup"]
+button_index = 11
+
+[node name="PlayerButtons" type="VBoxContainer"]
+size_flags_horizontal = 3
+
+[node name="Label" type="RichTextLabel" parent="."]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Player 1[/center]"
+fit_content = true
+
+[node name="PlayerInputs" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Joystick" type="Control" parent="PlayerInputs"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="PlayerInputs/Joystick"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInputs/Joystick/AspectRatioContainer"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_uvv2e")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerInputs/Joystick/AspectRatioContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="GridContainer" type="GridContainer" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Fill" type="Control" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonUp" type="Button" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "U"
+script = ExtResource("2_xfwqb")
+joy_button_events = Array[InputEventJoypadButton]([SubResource("InputEventJoypadButton_kvhup")])
+
+[node name="Fill2" type="Control" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonLeft" type="Button" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "L"
+script = ExtResource("2_xfwqb")
+
+[node name="Fill3" type="Control" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRight" type="Button" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "R"
+script = ExtResource("2_xfwqb")
+
+[node name="Fill4" type="Control" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonDown" type="Button" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "D"
+script = ExtResource("2_xfwqb")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="PlayerInputs"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SixButtons" type="Control" parent="PlayerInputs/AspectRatioContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerInputs/AspectRatioContainer/SixButtons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonsXA" type="VBoxContainer" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Padding" type="Control" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="Padding2" type="Control" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="Button" type="Control" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonX" type="Button" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "X"
+script = ExtResource("2_xfwqb")
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_exhu2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button2" type="Control" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonA" type="Button" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "A"
+script = ExtResource("2_xfwqb")
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button2"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_exhu2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ButtonsYB" type="VBoxContainer" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Padding" type="Control" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="Button" type="Control" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonY" type="Button" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "Y"
+script = ExtResource("2_xfwqb")
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_exhu2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button2" type="Control" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonB" type="Button" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "B"
+script = ExtResource("2_xfwqb")
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button2"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_exhu2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Padding2" type="Control" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="ButtonsZC" type="VBoxContainer" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Control" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonZ" type="Button" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "Z"
+script = ExtResource("2_xfwqb")
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_exhu2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button2" type="Control" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonC" type="Button" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "C"
+script = ExtResource("2_xfwqb")
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button2"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_exhu2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Padding" type="Control" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="Padding2" type="Control" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="Start" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBoxContainer/Start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonP1" type="Button" parent="HBoxContainer/Start/AspectRatioContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "Start"
+script = ExtResource("2_xfwqb")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Start/AspectRatioContainer"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("3_5cjd5")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="InsertCredit" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBoxContainer/InsertCredit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonCoin1" type="Button" parent="HBoxContainer/InsertCredit/AspectRatioContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "Insert Credit"
+script = ExtResource("2_xfwqb")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/InsertCredit/AspectRatioContainer"]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_60rxe")
+expand_mode = 2
+stretch_mode = 5

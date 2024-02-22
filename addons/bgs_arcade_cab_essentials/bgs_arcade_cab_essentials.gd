@@ -72,7 +72,6 @@ func _setup_input_settings() -> void:
 	ProjectSettings.save()
 
 
-
 func _setup_credits_autoload() -> void:
 	add_autoload_singleton(BgsCabConsts.AutoloadNames.credits, "res://addons/bgs_arcade_cab_essentials/autoloads/bgs_credits_autoload.gd")	
 
