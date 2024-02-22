@@ -2,6 +2,10 @@
 extends EditorPlugin
 
 
+#region Player Input
+const default_action_set:PlayerInputActionSet = preload("res://addons/bgs_arcade_cab_essentials/resources/player_input/action_sets/default_action_set.tres")
+#endregion
+
 #region Bottom Panel
 const main_ui := preload("res://addons/bgs_arcade_cab_essentials/ui/main_ui.tscn")
 const main_ui_button_label:= "BGS Arcade Options"
@@ -41,34 +45,17 @@ func _disable_plugin():
 #region Plugin Setup
 
 func _setup_input_settings() -> void:
-	for action in BgsCabConsts.PlayerInput.mappings:
-		if ProjectSettings.has_setting("input/%s" % action):
-			continue # Skip any actions that already exist in settings
-		var input_info = {
+	for action in default_action_set.actions:
+		if ProjectSettings.has_setting("input/%s" % action.name):
+			printerr("Action %s already in ProjectSettings!" % action.name)
+		var action_info = {
 			"deadzone": 0.5,
-			"events": [],
+			"events": []
 		}
-		var device = BgsCabConsts.PlayerInput.mappings[action][BgsCabConsts.PlayerInput.MappingKeys.device]
-		# Joypad Buttons
-		if BgsCabConsts.PlayerInput.mappings[action].has(BgsCabConsts.PlayerInput.MappingKeys.buttons):
-			for button in BgsCabConsts.PlayerInput.mappings[action][BgsCabConsts.PlayerInput.MappingKeys.buttons]:
-				var button_event = InputEventJoypadButton.new()
-				button_event.button_index = button
-				button_event.device = device
-				input_info["events"].append(button_event)
-		if BgsCabConsts.PlayerInput.mappings[action].has(BgsCabConsts.PlayerInput.MappingKeys.axis):
-			for axis in BgsCabConsts.PlayerInput.mappings[action][BgsCabConsts.PlayerInput.MappingKeys.axis]:
-				var axis_event = InputEventJoypadMotion.new()
-				axis_event.axis = axis
-				axis_event.device = device
-				input_info["events"].append(axis_event)
-		if BgsCabConsts.PlayerInput.mappings[action].has(BgsCabConsts.PlayerInput.MappingKeys.keys):
-			for key in BgsCabConsts.PlayerInput.mappings[action][BgsCabConsts.PlayerInput.MappingKeys.keys]:
-				var key_event = InputEventKey.new()
-				key_event.physical_keycode = key
-				key_event.device = 0 # Keyboard events are always all keyboards (should only be one)
-				input_info["events"].append(key_event)
-		ProjectSettings.set("input/%s" % action, input_info)
+		action_info["events"].append_array(action.joy_button_events)
+		action_info["events"].append_array(action.joy_motion_events)
+		action_info["events"].append_array(action.key_events)
+		ProjectSettings.set_setting("input/%s" % action.name, action_info)
 	ProjectSettings.save()
 
 
@@ -157,9 +144,8 @@ func _setup_ui() -> void:
 #region Plugin Cleanup
 
 func _cleanup_input_settings() -> void:
-	for action in BgsCabConsts.PlayerInput.mappings:
-		ProjectSettings.set("input/%s" % action, null)
-	InputMap.load_from_project_settings()
+	for action in default_action_set.actions:
+		ProjectSettings.set("input/%s" % action.name, null)
 	ProjectSettings.save()
 
 

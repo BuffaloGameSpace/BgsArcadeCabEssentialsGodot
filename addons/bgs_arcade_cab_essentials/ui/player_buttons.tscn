@@ -1,13 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b47b2a8kvhjep"]
+[gd_scene load_steps=6 format=3 uid="uid://b47b2a8kvhjep"]
 
 [ext_resource type="Texture2D" uid="uid://bxjnbm7f04wpq" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Base.svg" id="1_uvv2e"]
 [ext_resource type="Texture2D" uid="uid://bdbr1i3wjexai" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Blank Button.svg" id="2_exhu2"]
 [ext_resource type="Script" path="res://addons/bgs_arcade_cab_essentials/ui/PlayerButton.gd" id="2_xfwqb"]
 [ext_resource type="Texture2D" uid="uid://mlcpuheaqyr8" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/P1 Button.svg" id="3_5cjd5"]
 [ext_resource type="Texture2D" uid="uid://ctp0rj7bao06s" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Coin Mech.svg" id="4_60rxe"]
-
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_kvhup"]
-button_index = 11
 
 [node name="PlayerButtons" type="VBoxContainer"]
 size_flags_horizontal = 3
@@ -67,7 +64,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "U"
 script = ExtResource("2_xfwqb")
-joy_button_events = Array[InputEventJoypadButton]([SubResource("InputEventJoypadButton_kvhup")])
 
 [node name="Fill2" type="Control" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer"]
 layout_mode = 2

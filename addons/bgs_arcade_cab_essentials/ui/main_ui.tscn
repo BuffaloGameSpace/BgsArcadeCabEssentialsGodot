@@ -74,7 +74,6 @@ text = "Force Fullscreen"
 [node name="LaunchFullscreenCheckBox" type="CheckBox" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/LaunchFullscreen"]
 layout_mode = 2
 size_flags_horizontal = 3
-button_pressed = true
 text = "Fullscreen Enabled"
 
 [node name="HideCursor" type="VBoxContainer" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer"]
@@ -93,7 +92,6 @@ text = "Hide Cursor"
 [node name="HideCursorCheckBox" type="CheckBox" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/HideCursor/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-button_pressed = true
 text = "Cursor Hidden"
 
 [node name="Credits" type="VBoxContainer" parent="Game Options/MarginContainer/ScrollContainer/VBoxContainer"]
