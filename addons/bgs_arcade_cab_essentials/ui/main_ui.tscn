@@ -14,10 +14,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_p4apt")
-current_tab = 1
 
 [node name="Game Options" type="Control" parent="." node_paths=PackedStringArray("launch_fullscreen", "hide_cursor", "min_credits", "free_play", "idle_quit_enabled", "idle_quit_timeout")]
-visible = false
 layout_mode = 2
 script = ExtResource("1_d2i1v")
 launch_fullscreen = NodePath("MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/LaunchFullscreen/LaunchFullscreenCheckBox")
@@ -187,6 +185,7 @@ rounded = true
 suffix = "seconds"
 
 [node name="Input Actions" type="Control" parent="." node_paths=PackedStringArray("input_action_tree", "show_built_in_actions_checkbutton", "help_dialog", "buttons")]
+visible = false
 layout_mode = 2
 script = ExtResource("2_3ysxe")
 input_action_tree = NodePath("MarginContainer/HSplitContainer/InputActions/InputActionsTree")
@@ -275,9 +274,10 @@ title = "Input Action Help"
 initial_position = 1
 size = Vector2i(600, 261)
 ok_button_text = "Got It"
-dialog_text = "Here you can more easily manage what inputs on the arcade cabinet map to Input Actions created for the Input Map.
-
-Simply add new actions as you normally would via \"Project Settings > Input Map\", then return to \"BGS Arcade Options > Input Actions\". Clicking the \"Refresh\" button will display the current Input Map actions. Select an action, then toggle on or off the buttons on the controls to the right to enable or disable buttons for those actions."
+dialog_text = "Here you can more easily manage what inputs on the arcade cabinet map to Input Actions created for the Input Map. Simply add new actions as you normally would via \"Project Settings > Input Map\", then return to \"BGS Arcade Options > Input Actions\" to edit the action events. 
+- Clicking the \"Refresh\" button will display the current Input Map actions. 
+- Select an action, then toggle on or off the buttons on the controls to the right to enable or disable buttons for those actions. 
+- Hover over a controller button to see the additional mappings for testing with a gamepad or the keyboard."
 dialog_autowrap = true
 
 [connection signal="toggled" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/LaunchFullscreen/LaunchFullscreenCheckBox" to="Game Options" method="_on_launch_fullscreen_check_box_toggled"]

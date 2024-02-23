@@ -17,37 +17,82 @@
 [node name="Player1Buttons" instance=ExtResource("1_6sngi")]
 
 [node name="ButtonUp" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="1"]
+tooltip_text = "- D-Pad Up
+- 'W' Key"
 action = ExtResource("2_medfy")
 
 [node name="ButtonLeft" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="3"]
+tooltip_text = "- D-Pad Left
+- 'A' Key"
 action = ExtResource("3_2a02w")
 
 [node name="ButtonRight" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="5"]
+tooltip_text = "- D-Pad Right
+- 'D' Key"
 action = ExtResource("4_q2t84")
 
 [node name="ButtonDown" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="7"]
+tooltip_text = "- D-Pad Down
+- 'S' Key"
 action = ExtResource("5_jdqgp")
 
 [node name="ButtonX" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button" index="0"]
+tooltip_text = "- Left Action
+- Sony Square
+- Xbox X
+- Nintendo Y
+- 'U' Key"
 action = ExtResource("6_m7d26")
 
 [node name="ButtonA" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button2" index="0"]
+tooltip_text = "- Bottom Action
+- Sony Cross
+- Xbox A
+- Nintendo B
+- 'J' Key"
 action = ExtResource("7_4ftvj")
 
 [node name="ButtonY" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button" index="0"]
+tooltip_text = "- Top Action
+- Sony Triangle
+- Xbox Y
+- Nintendo X
+- 'I' Key"
 action = ExtResource("8_2vnun")
 
 [node name="ButtonB" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button2" index="0"]
+tooltip_text = "- Right Action
+- Sony Circle
+- Xbox B
+- Nintendo A
+- 'K' Key"
 action = ExtResource("9_0sl6y")
 
 [node name="ButtonZ" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button" index="0"]
+tooltip_text = "- Right Shoulder
+- Sony R1
+- Xbox RB
+- 'O' Key"
 action = ExtResource("10_w6gfr")
 
 [node name="ButtonC" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button2" index="0"]
+tooltip_text = "- Right Trigger
+- Sony R2
+- Xbox RT
+- 'L' Key"
 action = ExtResource("11_bpa7k")
 
 [node name="ButtonStart" parent="HBoxContainer/Start/AspectRatioContainer" index="0"]
+tooltip_text = "- Start
+- Xbox Menu
+- Nintendo '+'
+- 'Enter' Key"
 action = ExtResource("12_aijvy")
 
 [node name="ButtonInsertCredit" parent="HBoxContainer/InsertCredit/AspectRatioContainer" index="0"]
+tooltip_text = "- Back
+- Sony Select
+- Xbox Back
+- Nintendo '-'
+- 'Insert' Key"
 action = ExtResource("13_pdmjk")

@@ -21,40 +21,85 @@
 text = "[center]Player 2[/center]"
 
 [node name="ButtonUp" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="1"]
+tooltip_text = "- D-Pad Up
+- 'Up Arrow' Key"
 action = ExtResource("2_qg33m")
 
 [node name="ButtonLeft" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="3"]
+tooltip_text = "- D-Pad Left
+- 'Left Arrow' Key"
 action = ExtResource("3_qsycw")
 
 [node name="ButtonRight" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="5"]
+tooltip_text = "- D-Pad Right
+- 'Right Arrow' Key"
 action = ExtResource("4_m6rk5")
 
 [node name="ButtonDown" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="7"]
+tooltip_text = "- D-Pad Down
+- 'Down Arrow' Key"
 action = ExtResource("5_cef7x")
 
 [node name="ButtonX" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button" index="0"]
+tooltip_text = "- Left Action
+- Sony Square
+- Xbox X
+- Nintendo Y
+- 'Numpad 4' Key"
 action = ExtResource("6_gydu7")
 
 [node name="ButtonA" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button2" index="0"]
+tooltip_text = "- Bottom Action
+- Sony Cross
+- Xbox A
+- Nintendo B
+- 'Numpad 1' Key"
 action = ExtResource("7_2ks6c")
 
 [node name="ButtonY" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button" index="0"]
+tooltip_text = "- Top Action
+- Sony Triangle
+- Xbox Y
+- Nintendo X
+- 'Numpad 5' Key"
 action = ExtResource("8_q7dqh")
 
 [node name="ButtonB" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button2" index="0"]
+tooltip_text = "- Right Action
+- Sony Circle
+- Xbox B
+- Nintendo A
+- 'Numpad 2' Key"
 action = ExtResource("9_nt31f")
 
 [node name="ButtonZ" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button" index="0"]
+tooltip_text = "- Right Shoulder
+- Sony R1
+- Xbox RB
+- 'Numpad 6' Key"
 action = ExtResource("10_yvu1q")
 
 [node name="ButtonC" parent="PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button2" index="0"]
+tooltip_text = "- Right Trigger
+- Sony R2
+- Xbox RT
+- 'Numpad 3' Key"
 action = ExtResource("11_34kjx")
 
 [node name="ButtonStart" parent="HBoxContainer/Start/AspectRatioContainer" index="0"]
+tooltip_text = "- Start
+- Xbox Menu
+- Nintendo '+'
+- 'Numpad Enter' Key"
 action = ExtResource("12_p4lab")
 
 [node name="TextureRect" parent="HBoxContainer/Start/AspectRatioContainer" index="1"]
 texture = ExtResource("13_tcosv")
 
 [node name="ButtonInsertCredit" parent="HBoxContainer/InsertCredit/AspectRatioContainer" index="0"]
+tooltip_text = "- Back
+- Sony Select
+- Xbox Back
+- Nintendo '-'
+- 'Numpad +' Key"
 action = ExtResource("14_xltu8")
