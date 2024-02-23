@@ -260,14 +260,12 @@ size_flags_vertical = 3
 
 [node name="Player1Buttons" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls" instance=ExtResource("3_1nchm")]
 layout_mode = 2
-theme = null
 
 [node name="VSeparator" type="VSeparator" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls"]
 layout_mode = 2
 
 [node name="Player2Buttons" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls" instance=ExtResource("4_hdxiw")]
 layout_mode = 2
-theme = null
 
 [node name="HelpInfoDialog" type="AcceptDialog" parent="Input Actions"]
 title = "Input Action Help"
