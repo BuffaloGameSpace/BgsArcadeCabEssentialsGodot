@@ -186,11 +186,12 @@ value = 30.0
 rounded = true
 suffix = "seconds"
 
-[node name="Input Actions" type="Control" parent="." node_paths=PackedStringArray("input_action_tree", "show_built_in_actions_checkbutton", "buttons")]
+[node name="Input Actions" type="Control" parent="." node_paths=PackedStringArray("input_action_tree", "show_built_in_actions_checkbutton", "help_dialog", "buttons")]
 layout_mode = 2
 script = ExtResource("2_3ysxe")
-input_action_tree = NodePath("MarginContainer/HSplitContainer/VBoxContainer/InputActionsTree")
-show_built_in_actions_checkbutton = NodePath("MarginContainer/HSplitContainer/VBoxContainer/BuiltInActionsCheckButton")
+input_action_tree = NodePath("MarginContainer/HSplitContainer/InputActions/InputActionsTree")
+show_built_in_actions_checkbutton = NodePath("MarginContainer/HSplitContainer/InputActions/BuiltInActionsCheckButton")
+help_dialog = NodePath("HelpInfoDialog")
 buttons = [NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player1Buttons/PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer/ButtonUp"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player1Buttons/PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer/ButtonLeft"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player1Buttons/PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer/ButtonRight"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player1Buttons/PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer/ButtonDown"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player1Buttons/PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button/ButtonX"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player1Buttons/PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button2/ButtonA"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player1Buttons/PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button/ButtonY"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player1Buttons/PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button2/ButtonB"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player1Buttons/PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button/ButtonZ"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player1Buttons/PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button2/ButtonC"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player1Buttons/HBoxContainer/Start/AspectRatioContainer/ButtonStart"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player1Buttons/HBoxContainer/InsertCredit/AspectRatioContainer/ButtonInsertCredit"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player2Buttons/PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer/ButtonUp"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player2Buttons/PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer/ButtonLeft"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player2Buttons/PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer/ButtonRight"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player2Buttons/PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer/ButtonDown"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player2Buttons/PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button/ButtonX"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player2Buttons/PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsXA/Button2/ButtonA"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player2Buttons/PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button/ButtonY"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player2Buttons/PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsYB/Button2/ButtonB"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player2Buttons/PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button/ButtonZ"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player2Buttons/PlayerInputs/AspectRatioContainer/SixButtons/HBoxContainer/ButtonsZC/Button2/ButtonC"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player2Buttons/HBoxContainer/Start/AspectRatioContainer/ButtonStart"), NodePath("MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player2Buttons/HBoxContainer/InsertCredit/AspectRatioContainer/ButtonInsertCredit")]
 
 [node name="MarginContainer" type="MarginContainer" parent="Input Actions"]
@@ -205,15 +206,27 @@ grow_vertical = 2
 layout_mode = 2
 split_offset = 250
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Input Actions/MarginContainer/HSplitContainer"]
+[node name="InputActions" type="VBoxContainer" parent="Input Actions/MarginContainer/HSplitContainer"]
 layout_mode = 2
 
-[node name="BuiltInActionsCheckButton" type="CheckButton" parent="Input Actions/MarginContainer/HSplitContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Input Actions/MarginContainer/HSplitContainer/InputActions"]
+layout_mode = 2
+
+[node name="HelpButton" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputActions/HBoxContainer"]
+layout_mode = 2
+text = "Help"
+
+[node name="RefreshButton" type="Button" parent="Input Actions/MarginContainer/HSplitContainer/InputActions/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Refresh"
+
+[node name="BuiltInActionsCheckButton" type="CheckButton" parent="Input Actions/MarginContainer/HSplitContainer/InputActions"]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "Show Built-In BGS Actions"
 
-[node name="InputActionsTree" type="Tree" parent="Input Actions/MarginContainer/HSplitContainer/VBoxContainer"]
+[node name="InputActionsTree" type="Tree" parent="Input Actions/MarginContainer/HSplitContainer/InputActions"]
 layout_mode = 2
 size_flags_vertical = 3
 allow_reselect = true
@@ -248,12 +261,24 @@ size_flags_vertical = 3
 
 [node name="Player1Buttons" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls" instance=ExtResource("3_1nchm")]
 layout_mode = 2
+theme = null
 
 [node name="VSeparator" type="VSeparator" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls"]
 layout_mode = 2
 
 [node name="Player2Buttons" parent="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls" instance=ExtResource("4_hdxiw")]
 layout_mode = 2
+theme = null
+
+[node name="HelpInfoDialog" type="AcceptDialog" parent="Input Actions"]
+title = "Input Action Help"
+initial_position = 1
+size = Vector2i(600, 261)
+ok_button_text = "Got It"
+dialog_text = "Here you can more easily manage what inputs on the arcade cabinet map to Input Actions created for the Input Map.
+
+Simply add new actions as you normally would via \"Project Settings > Input Map\", then return to \"BGS Arcade Options > Input Actions\". Clicking the \"Refresh\" button will display the current Input Map actions. Select an action, then toggle on or off the buttons on the controls to the right to enable or disable buttons for those actions."
+dialog_autowrap = true
 
 [connection signal="toggled" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/LaunchFullscreen/LaunchFullscreenCheckBox" to="Game Options" method="_on_launch_fullscreen_check_box_toggled"]
 [connection signal="toggled" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/General/MarginContainer/VBoxContainer/HideCursor/HBoxContainer/HideCursorCheckBox" to="Game Options" method="_on_hide_cursor_check_box_toggled"]
@@ -261,9 +286,11 @@ layout_mode = 2
 [connection signal="toggled" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Credits/MarginContainer/VBoxContainer/HBoxContainer/FreePlayCheckBox" to="Game Options" method="_on_free_play_check_box_toggled"]
 [connection signal="toggled" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Idle Quit/MarginContainer/VBoxContainer/Enabled/IdleTimerCheckBox" to="Game Options" method="_on_idle_timer_check_box_toggled"]
 [connection signal="value_changed" from="Game Options/MarginContainer/ScrollContainer/VBoxContainer/Idle Quit/MarginContainer/VBoxContainer/Timeout/IdleTimeoutSpinBox" to="Game Options" method="_on_idle_timeout_spin_box_value_changed"]
-[connection signal="toggled" from="Input Actions/MarginContainer/HSplitContainer/VBoxContainer/BuiltInActionsCheckButton" to="Input Actions" method="_on_built_in_actions_check_button_toggled"]
-[connection signal="cell_selected" from="Input Actions/MarginContainer/HSplitContainer/VBoxContainer/InputActionsTree" to="Input Actions" method="_on_input_actions_tree_cell_selected"]
-[connection signal="nothing_selected" from="Input Actions/MarginContainer/HSplitContainer/VBoxContainer/InputActionsTree" to="Input Actions" method="_on_input_actions_tree_nothing_selected"]
+[connection signal="pressed" from="Input Actions/MarginContainer/HSplitContainer/InputActions/HBoxContainer/HelpButton" to="Input Actions" method="_on_help_button_pressed"]
+[connection signal="pressed" from="Input Actions/MarginContainer/HSplitContainer/InputActions/HBoxContainer/RefreshButton" to="Input Actions" method="_on_refresh_button_pressed"]
+[connection signal="toggled" from="Input Actions/MarginContainer/HSplitContainer/InputActions/BuiltInActionsCheckButton" to="Input Actions" method="_on_built_in_actions_check_button_toggled"]
+[connection signal="cell_selected" from="Input Actions/MarginContainer/HSplitContainer/InputActions/InputActionsTree" to="Input Actions" method="_on_input_actions_tree_cell_selected"]
+[connection signal="nothing_selected" from="Input Actions/MarginContainer/HSplitContainer/InputActions/InputActionsTree" to="Input Actions" method="_on_input_actions_tree_nothing_selected"]
 
 [editable path="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player1Buttons"]
 [editable path="Input Actions/MarginContainer/HSplitContainer/InputLayout/ScrollContainer/MarginContainer/AspectRatioContainer/PlayerControls/Player2Buttons"]

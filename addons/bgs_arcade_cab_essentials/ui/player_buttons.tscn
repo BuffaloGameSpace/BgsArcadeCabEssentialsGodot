@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b47b2a8kvhjep"]
+[gd_scene load_steps=8 format=3 uid="uid://b47b2a8kvhjep"]
 
 [ext_resource type="Texture2D" uid="uid://bxjnbm7f04wpq" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Stick Base.svg" id="1_uvv2e"]
 [ext_resource type="Texture2D" uid="uid://bdbr1i3wjexai" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Blank Button.svg" id="2_exhu2"]
@@ -6,8 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://mlcpuheaqyr8" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/P1 Button.svg" id="3_5cjd5"]
 [ext_resource type="Texture2D" uid="uid://ctp0rj7bao06s" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/Coin Mech.svg" id="4_60rxe"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ah7hb"]
+bg_color = Color(0.643137, 0.682353, 0.752941, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_d4bl1"]
+Button/colors/font_pressed_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+Button/styles/pressed = SubResource("StyleBoxFlat_ah7hb")
+
 [node name="PlayerButtons" type="VBoxContainer"]
 size_flags_horizontal = 3
+theme = SubResource("Theme_d4bl1")
 
 [node name="Label" type="RichTextLabel" parent="."]
 layout_mode = 2
