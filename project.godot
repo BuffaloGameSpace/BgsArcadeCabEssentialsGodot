@@ -20,9 +20,9 @@ boot_splash/main_scene="res://demo/src/demo/demo.tscn"
 
 [autoload]
 
-BgsCabCredits="*res://addons/bgs_arcade_cab_essentials/autoloads/bgs_credits_autoload.gd"
-BgsCabIdleQuit="*res://addons/bgs_arcade_cab_essentials/autoloads/bgs_idle_quit_autoload.gd"
-BgsGeneralConfig="*res://addons/bgs_arcade_cab_essentials/autoloads/bgs_general_autoload.gd"
+BgsCabCredits="*res://addons/bgs_cab_essentials/autoloads/bgs_credits_autoload.gd"
+BgsCabIdleQuit="*res://addons/bgs_cab_essentials/autoloads/bgs_idle_quit_autoload.gd"
+BgsGeneralConfig="*res://addons/bgs_cab_essentials/autoloads/bgs_general_autoload.gd"
 
 [bgs_arcade_cab]
 
@@ -35,7 +35,7 @@ idle_quit/timeout=30
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/bgs_arcade_cab_essentials/plugin.cfg")
+enabled=PackedStringArray("res://addons/bgs_cab_essentials/plugin.cfg")
 
 [input]
 
