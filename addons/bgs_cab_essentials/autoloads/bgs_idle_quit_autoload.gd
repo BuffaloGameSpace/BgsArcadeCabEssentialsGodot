@@ -13,8 +13,7 @@ func _ready() -> void:
 
 func _unhandled_input(event):
 	if enabled:
-		if event is InputEventJoypadButton || event is InputEventJoypadMotion:
-			start(wait_time)
+		start(wait_time)
 
 
 func _on_timeout() -> void:
