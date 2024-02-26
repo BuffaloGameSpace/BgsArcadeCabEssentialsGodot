@@ -16,6 +16,6 @@ class Settings:
 
 
 class AutoloadNames:
-	const credits:= "BgsArcadeCabCredits"
-	const idle_quit:= "BgsArcadeCabIdleQuit"
+	const credits:= "BgsCabCredits"
+	const idle_quit:= "BgsCabIdleQuit"
 	const general_config:= "BgsGeneralConfig"
