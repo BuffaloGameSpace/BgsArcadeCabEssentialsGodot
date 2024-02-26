@@ -15,18 +15,11 @@ var _main_ui_shown:= false
 
 
 func _enter_tree():
-	_setup_credits_autoload()
-	_setup_idle_quit_autoload()
-	_setup_general_autoload()
 	_setup_ui()
-	pass
 
 
 func _exit_tree():
 	_cleanup_ui()
-	_cleanup_general_autoload()
-	_cleanup_idle_quit_autoload()
-	_cleanup_credits_autoload()
 
 
 func _enable_plugin():
@@ -35,12 +28,21 @@ func _enable_plugin():
 	_setup_credits_settings()
 	_setup_idle_quit_settings()
 
+	_setup_credits_autoload()
+	_setup_idle_quit_autoload()
+	_setup_general_autoload()
+
+
 
 func _disable_plugin():
 	_cleanup_idle_quit_settings()
 	_cleanup_credits_settings()
 	_cleanup_general_settings()
 	_cleanup_input_settings()
+
+	_cleanup_general_autoload()
+	_cleanup_idle_quit_autoload()
+	_cleanup_credits_autoload()
 
 
 
