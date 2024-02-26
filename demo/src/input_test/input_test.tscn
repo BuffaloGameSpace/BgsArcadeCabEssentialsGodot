@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://3r04t2sa1sbq"]
+[gd_scene load_steps=13 format=3 uid="uid://3r04t2sa1sbq"]
 
 [ext_resource type="Texture2D" uid="uid://mlcpuheaqyr8" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/P1 Button.svg" id="1_qsklv"]
+[ext_resource type="Script" path="res://demo/src/input_test/StartButtonContainer.gd" id="1_t430w"]
 [ext_resource type="PackedScene" uid="uid://bmnqy4252jjrr" path="res://demo/src/input_test/player_input.tscn" id="1_vyapc"]
 [ext_resource type="Texture2D" uid="uid://bp1mkwoqaveyx" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/P1 Button Pressed.svg" id="3_oukgb"]
 [ext_resource type="Texture2D" uid="uid://dij7420jonnq2" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/P2 Button.svg" id="4_v342k"]
@@ -8,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bd8a0f73jf34u" path="res://addons/bgs_arcade_cab_essentials/assets/sprites/inputs/P2 Button Pressed.svg" id="5_rvawm"]
 [ext_resource type="Script" path="res://demo/src/input_test/device_label.gd" id="6_jw5j7"]
 [ext_resource type="Script" path="res://demo/src/input_test/current_credits_label.gd" id="8_24lic"]
+[ext_resource type="Script" path="res://demo/src/input_test/CreditsRedeemableLabel.gd" id="9_4s2mf"]
 [ext_resource type="Script" path="res://demo/src/input_test/idle_countdown_label.gd" id="9_ba5hj"]
 
 [sub_resource type="Theme" id="Theme_372qn"]
@@ -36,6 +38,7 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 alignment = 1
+script = ExtResource("1_t430w")
 metadata/_edit_group_ = true
 
 [node name="CabButton_Start_p1" type="TextureRect" parent="VBoxContainer/StartButtonContainer"]
@@ -111,6 +114,11 @@ text = "Credits:"
 [node name="CurrentCreditsLabel" type="Label" parent="VBoxContainer/BottomLabelContainer/CreditsContainer"]
 layout_mode = 2
 script = ExtResource("8_24lic")
+
+[node name="CreditsRedeemableLabel" type="Label" parent="VBoxContainer/BottomLabelContainer"]
+layout_mode = 2
+text = "Press Start!"
+script = ExtResource("9_4s2mf")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/BottomLabelContainer"]
 layout_mode = 2
