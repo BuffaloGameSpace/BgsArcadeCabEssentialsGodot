@@ -18,21 +18,25 @@
 
 [node name="ButtonUp" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="1"]
 tooltip_text = "- D-Pad Up
+- Left Analog Up
 - 'W' Key"
 action = ExtResource("2_medfy")
 
 [node name="ButtonLeft" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="3"]
 tooltip_text = "- D-Pad Left
+- Left Analog Left
 - 'A' Key"
 action = ExtResource("3_2a02w")
 
 [node name="ButtonRight" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="5"]
 tooltip_text = "- D-Pad Right
+- Left Analog Right
 - 'D' Key"
 action = ExtResource("4_q2t84")
 
 [node name="ButtonDown" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="7"]
 tooltip_text = "- D-Pad Down
+- Left Analog Down
 - 'S' Key"
 action = ExtResource("5_jdqgp")
 

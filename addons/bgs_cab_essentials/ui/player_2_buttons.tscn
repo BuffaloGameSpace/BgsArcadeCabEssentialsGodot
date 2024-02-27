@@ -22,21 +22,25 @@ text = "[center]Player 2[/center]"
 
 [node name="ButtonUp" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="1"]
 tooltip_text = "- D-Pad Up
+- Left Analog Up
 - 'Up Arrow' Key"
 action = ExtResource("2_qg33m")
 
 [node name="ButtonLeft" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="3"]
 tooltip_text = "- D-Pad Left
+- Left Analog Left
 - 'Left Arrow' Key"
 action = ExtResource("3_qsycw")
 
 [node name="ButtonRight" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="5"]
 tooltip_text = "- D-Pad Right
+- Left Analog Right
 - 'Right Arrow' Key"
 action = ExtResource("4_m6rk5")
 
 [node name="ButtonDown" parent="PlayerInputs/Joystick/AspectRatioContainer/MarginContainer/GridContainer" index="7"]
 tooltip_text = "- D-Pad Down
+- Left Analog Down
 - 'Down Arrow' Key"
 action = ExtResource("5_cef7x")
 
