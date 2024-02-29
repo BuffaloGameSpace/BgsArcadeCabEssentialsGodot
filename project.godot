@@ -26,8 +26,8 @@ BgsGeneralConfig="*res://addons/bgs_cab_essentials/autoloads/bgs_general_autoloa
 
 [bgs_arcade_cab]
 
-general/hide_cursor=false
-general/force_fullscreen=false
+general/hide_cursor=true
+general/force_fullscreen=true
 credits/minimum_required_credits=1
 credits/free_play_enabled=false
 idle_quit/enabled=true
@@ -218,4 +218,5 @@ bgs_z_p2={
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.215686, 0.215686, 0.215686, 1)
