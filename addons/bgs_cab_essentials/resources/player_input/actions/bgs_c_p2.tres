@@ -1,6 +1,11 @@
-[gd_resource type="Resource" script_class="PlayerInputAction" load_steps=4 format=3 uid="uid://3itxeucijrjh"]
+[gd_resource type="Resource" script_class="PlayerInputAction" load_steps=5 format=3 uid="uid://3itxeucijrjh"]
 
 [ext_resource type="Script" path="res://addons/bgs_cab_essentials/resources/player_input/player_input_action.gd" id="1_lvvp3"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_jkg2j"]
+device = 1
+button_index = 9
+pressed = true
 
 [sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_d5d3p"]
 device = 1
@@ -15,6 +20,6 @@ unicode = 51
 [resource]
 script = ExtResource("1_lvvp3")
 name = &"bgs_c_p2"
-joy_button_events = Array[InputEventJoypadButton]([])
+joy_button_events = Array[InputEventJoypadButton]([SubResource("InputEventJoypadButton_jkg2j")])
 joy_motion_events = Array[InputEventJoypadMotion]([SubResource("InputEventJoypadMotion_d5d3p")])
 key_events = Array[InputEventKey]([SubResource("InputEventKey_luhav")])
