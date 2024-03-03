@@ -13,7 +13,10 @@ func _ready() -> void:
 
 func _unhandled_input(event):
 	if enabled:
-		start(wait_time)
+		for action in InputMap.get_actions():
+			if event.is_action(action):
+				start(wait_time)
+				break
 
 
 func _on_timeout() -> void:
